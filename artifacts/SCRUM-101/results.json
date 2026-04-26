@@ -1,0 +1,28 @@
+{
+  "jiraId": "SCRUM-101",
+  "suite": "Regression",
+  "timestamp": "2026-04-21T12:00:00Z",
+  "total": 3,
+  "passed": 2,
+  "failed": 1,
+  "results": [
+    {
+      "tcid": "TC_UI_01",
+      "status": "PASS",
+      "duration": "4.5s",
+      "screenshot": "artifacts/SCRUM-101/screenshots/TC_UI_01_PASS.png"
+    },
+    {
+      "tcid": "TC_UI_02",
+      "status": "PASS",
+      "duration": "1.2s",
+      "screenshot": "artifacts/SCRUM-101/screenshots/TC_UI_02_PASS.png"
+    },
+    {
+      "tcid": "TC_UI_03",
+      "status": "FAIL",
+      "error": "Locator timeout: element //label[text()='Nickname']/../../div[2]/input not found",
+      "screenshot": "artifacts/SCRUM-101/screenshots/TC_UI_03_FAIL.png"
+    }
+  ]
+}

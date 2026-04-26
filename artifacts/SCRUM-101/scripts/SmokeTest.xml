@@ -1,0 +1,5 @@
+<suite name="SmokeTestSuite">
+  <test name="TC_UI_01">
+    <class name="ProfileTests" method="updateProfile" />
+  </test>
+</suite>

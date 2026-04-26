@@ -1,0 +1,18 @@
+{
+  "jiraId": "SCRUM-200",
+  "status": "PASS",
+  "executionSummary": {
+    "smoke": "PASS",
+    "regression": "PASS",
+    "duration": "1m 12s"
+  },
+  "selfHeal": {
+    "events": 0,
+    "status": "Healthy"
+  },
+  "aiInsights": {
+    "complexityScore": "High",
+    "riskAreas": ["Username duplication logic", "Role-based search performance"],
+    "performance": "Search results loaded in 1.2s (Optimal)"
+  }
+}

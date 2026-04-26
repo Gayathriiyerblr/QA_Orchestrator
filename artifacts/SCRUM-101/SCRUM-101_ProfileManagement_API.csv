@@ -1,0 +1,4 @@
+TCID,Endpoint,Method,Payload,Expected Code,Validation
+TC_API_01,/api/personal-details,PUT,"{nickname: 'Antigravity'}",200,"body.status == 'success'"
+TC_API_02,/api/personal-details,GET,{},200,"body.nickname matches input"
+TC_API_03,/api/personal-details,PUT,"{nickname: null}",400,"Error: Field cannot be null"

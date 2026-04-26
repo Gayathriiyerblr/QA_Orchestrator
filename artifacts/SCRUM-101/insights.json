@@ -1,0 +1,5 @@
+{
+  "rootCause": "Locator timeout in Nickname field. Appearance suggests DOM structure change in OrangeHRM update.",
+  "suggestion": "Update locator to use aria-label or name attribute instead of relative XPath.",
+  "confidence": 0.95
+}

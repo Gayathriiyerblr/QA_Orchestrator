@@ -1,0 +1,13 @@
+{
+  "jiraId": "SCRUM-200",
+  "title": "Admin: User Life Cycle Management",
+  "description": "System admin must be able to add new users and search for them using 'Username' and 'User Role' filters.",
+  "acceptanceCriteria": [
+    "Navigate to Admin -> User Management",
+    "Click Add User",
+    "Fill User Role, Employee Name, Status, Username, and Password",
+    "Verify Success Message upon save",
+    "Filter the user list by the new Username",
+    "Confirm the user record appears correctly"
+  ]
+}

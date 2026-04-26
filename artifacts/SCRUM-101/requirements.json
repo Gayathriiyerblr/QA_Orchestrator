@@ -1,0 +1,16 @@
+{
+  "jiraId": "SCRUM-101",
+  "title": "Enhance Profile Management: Personal Details Update",
+  "description": "Users should be able to navigate to My Info -> Personal Details and update Nickname and Military Service fields.",
+  "acceptanceCriteria": [
+    "Navigate to My Info menu",
+    "Select Personal Details sub-menu",
+    "Update Nickname and Military Service fields",
+    "Click Save and verify Success Message"
+  ],
+  "analysis": {
+    "module": "PIM / My Info",
+    "complexity": "Medium",
+    "dependencies": ["Login", "PIM Module Access"]
+  }
+}

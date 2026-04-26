@@ -1,0 +1,3 @@
+1. Character limit for the Nickname field is not specified.
+2. Handling of null or empty values for Military Service status is ambiguous.
+3. Behavior after session timeout during save operation needs definition.
