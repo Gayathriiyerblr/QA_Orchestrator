@@ -7,7 +7,7 @@
     "password": "testingisfun99",
     "isOrangeHrm": false
   },
-  "generatedAt": "2026-08-03T19:11:33.154Z",
+  "generatedAt": "2026-08-03T19:49:33.799Z",
   "source": "JIRA",
   "ui": [
     {
@@ -20,121 +20,113 @@
     },
     {
       "tcid": "TC_UI_02",
-      "scenario": "Verify acceptance criterion: User can navigate to the application.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: User can navigate to the application..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * User can navigate to the application.",
+      "scenario": "Verify: User can navigate to the application.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Open the application URL in a browser.\n5. Wait for the home page to load completely.\n6. Verify the product listings and site header are visible.",
+      "expected": "The application loads and the home page is displayed.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_03",
-      "scenario": "Verify acceptance criterion: User can access the Sign In page.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: User can access the Sign In page..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * User can access the Sign In page.",
+      "scenario": "Verify: User can access the Sign In page.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. On the home page, locate the \"Sign In\" link in the header.\n5. Click \"Sign In\".\n6. Verify the Sign In page loads with Username and Password fields.",
+      "expected": "The Sign In page is displayed with Username and Password fields.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_04",
-      "scenario": "Verify acceptance criterion: User can log in using valid demo credentials.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: User can log in using valid demo credentials..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * User can log in using valid demo credentials.",
+      "scenario": "Verify: User can log in using valid demo credentials.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. On the Sign In page, click the \"Username\" dropdown and select a valid demo user.\n5. Click the \"Password\" dropdown and select the matching demo password.\n6. Click \"Log In\".\n7. Verify the user is redirected to the home page.",
+      "expected": "The user is logged in and redirected to the home page.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_05",
-      "scenario": "Verify acceptance criterion: User name is displayed after successful login.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: User name is displayed after successful login..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * User name is displayed after successful login.",
+      "scenario": "Verify: No authentication errors are displayed.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. After logging in with valid credentials, check for error banners or alerts.\n5. Verify no authentication error message is displayed.",
+      "expected": "No authentication error message is displayed.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_06",
-      "scenario": "Verify acceptance criterion: No authentication errors are displayed.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: No authentication errors are displayed..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * No authentication errors are displayed.",
+      "scenario": "Verify: User can search for a product using the search functionality.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Locate the search box on the home page.\n5. Type a product name (e.g. \"iPhone\") and submit the search.\n6. Verify matching products are displayed in the results.",
+      "expected": "Matching products are displayed in the search results.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_07",
-      "scenario": "Verify acceptance criterion: User can search for a product using the search functionality.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: User can search for a product using the search functionality..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * User can search for a product using the search functionality.",
+      "scenario": "Verify: User can filter products by brand.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Locate the brand filter on the product listing page.\n5. Select a brand (e.g. \"Apple\").\n6. Verify the product list updates to show only that brand.",
+      "expected": "The product list is filtered to the selected brand.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_08",
-      "scenario": "Verify acceptance criterion: User can filter products by brand.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: User can filter products by brand..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * User can filter products by brand.",
+      "scenario": "Verify: Filtered products are displayed correctly.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Apply a brand or category filter.\n5. Inspect each product card in the results.\n6. Verify all displayed products match the applied filter.",
+      "expected": "All displayed products match the applied filter.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_09",
-      "scenario": "Verify acceptance criterion: Filtered products are displayed correctly.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: Filtered products are displayed correctly..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * Filtered products are displayed correctly.",
+      "scenario": "Verify: Search and filter results are updated without page errors.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform a search and then apply a brand filter.\n5. Watch the results area as it updates.\n6. Verify the results update in place with no page errors or console errors.",
+      "expected": "Search/filter results update in place with no errors.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_010",
-      "scenario": "Verify acceptance criterion: Search and filter results are updated without page errors.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: Search and filter results are updated without page errors..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * Search and filter results are updated without page errors.",
+      "scenario": "Verify: Product details remain accessible after filtering.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Apply a brand filter to the product list.\n5. Click on any filtered product card.\n6. Verify the product detail page opens and shows full details.",
+      "expected": "Product details open correctly after filtering.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_011",
-      "scenario": "Verify acceptance criterion: Product details remain accessible after filtering.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: Product details remain accessible after filtering..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * Product details remain accessible after filtering.",
+      "scenario": "Verify: User can select any available product.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. From the product listing, click on a product card.\n5. Verify the product detail page opens.\n6. Verify the product name, price, and image are displayed.",
+      "expected": "The product detail page opens with full details.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_012",
-      "scenario": "Verify acceptance criterion: User can select any available product.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: User can select any available product..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * User can select any available product.",
+      "scenario": "Verify: User can add the selected product to the cart.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. On a product detail page, click \"Add to Cart\".\n5. Verify the product is added without errors.",
+      "expected": "The product is added to the cart successfully.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_013",
-      "scenario": "Verify acceptance criterion: User can add the selected product to the cart.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: User can add the selected product to the cart..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * User can add the selected product to the cart.",
+      "scenario": "Verify: Cart icon updates with the correct item count.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Add a product to the cart.\n5. Inspect the cart icon in the header.\n6. Verify the cart icon shows the correct item count.",
+      "expected": "The cart icon shows the correct item count.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_014",
-      "scenario": "Verify acceptance criterion: Cart icon updates with the correct item count.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: Cart icon updates with the correct item count..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * Cart icon updates with the correct item count.",
+      "scenario": "Verify: Added product appears in the shopping cart.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Add a product to the cart.\n5. Open the shopping cart.\n6. Verify the added product appears in the cart list.",
+      "expected": "The added product is visible in the shopping cart.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_015",
-      "scenario": "Verify acceptance criterion: Added product appears in the shopping cart.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: Added product appears in the shopping cart..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * Added product appears in the shopping cart.",
-      "priority": "Medium",
-      "severity": "Major"
-    },
-    {
-      "tcid": "TC_UI_016",
-      "scenario": "Verify acceptance criterion: Product price and quantity are displayed correctly.",
-      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Perform the action described in the acceptance criterion: Product price and quantity are displayed correctly..\n5. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * Product price and quantity are displayed correctly.",
+      "scenario": "Verify: Product price and quantity are displayed correctly.",
+      "steps": "1. Navigate to https://bstackdemo.com/.\n2. Sign in with username \"demouser\" and password \"testingisfun99\".\n3. Verify login succeeds and the home page loads.\n4. Open the shopping cart containing the added product.\n5. Verify the product price matches the listing price.\n6. Verify the quantity is displayed correctly.",
+      "expected": "The cart shows the correct price and quantity.",
       "priority": "Medium",
       "severity": "Major"
     },

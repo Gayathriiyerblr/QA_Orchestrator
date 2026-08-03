@@ -7,7 +7,7 @@
     "password": "admin123",
     "isOrangeHrm": true
   },
-  "generatedAt": "2026-08-03T19:26:15.410Z",
+  "generatedAt": "2026-08-03T19:47:21.280Z",
   "source": "JIRA",
   "ui": [
     {
@@ -20,65 +20,33 @@
     },
     {
       "tcid": "TC_UI_02",
-      "scenario": "Verify acceptance criterion: URL: [https://opensource-demo.orangehrmlive.com/|https://opensource-demo.orangehrmlive.com/|smart-link]",
-      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. Navigate to the relevant module.\n5. Perform the action described in the acceptance criterion: URL: [https://opensource-demo.orangehrmlive.com/|https://opensource-demo.orangehrmlive.com/|smart-link].\n6. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * URL: [https://opensource-demo.orangehrmlive.com/|https://opensource-demo.orangehrmlive.com/|smart-link]",
+      "scenario": "Verify: PIM: Create a test employee record.",
+      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. From the top menu bar, click \"PIM\".\n5. Click the \"Add\" button to open the Add Employee form.\n6. Enter a First Name, Last Name, and a unique Employee Id.\n7. Click \"Save\" to create the employee record.\n8. Verify the employee is created and the success message is displayed.",
+      "expected": "The employee record is created successfully in the PIM module.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_03",
-      "scenario": "Verify acceptance criterion: Username: Admin",
-      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. Navigate to the relevant module.\n5. Perform the action described in the acceptance criterion: Username: Admin.\n6. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * Username: Admin",
+      "scenario": "Verify: Leave: Submit a practice leave request.",
+      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. From the top menu bar, click \"Leave\".\n5. Click \"Apply\" and select the Leave Type, From Date, and To Date.\n6. Add any comments and click \"Apply\".\n7. Verify the leave request is submitted successfully.",
+      "expected": "The leave request is submitted successfully.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_04",
-      "scenario": "Verify acceptance criterion: Password: admin123",
-      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. Navigate to the relevant module.\n5. Perform the action described in the acceptance criterion: Password: admin123.\n6. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: * Password: admin123",
+      "scenario": "Verify: Recruitment: View current job vacancies.",
+      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. From the top menu bar, click \"Recruitment\".\n5. Navigate to the \"Candidates\" or \"Vacancies\" section.\n6. Verify the current job vacancies and candidate list are displayed.",
+      "expected": "The recruitment vacancies/candidates are displayed.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_05",
-      "scenario": "Verify acceptance criterion: PIM: Create a test employee record.",
-      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. Navigate to the relevant module.\n5. Perform the action described in the acceptance criterion: PIM: Create a test employee record..\n6. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: # PIM: Create a test employee record.",
-      "priority": "Medium",
-      "severity": "Major"
-    },
-    {
-      "tcid": "TC_UI_06",
-      "scenario": "Verify acceptance criterion: Leave: Submit a practice leave request.",
-      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. Navigate to the relevant module.\n5. Perform the action described in the acceptance criterion: Leave: Submit a practice leave request..\n6. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: # Leave: Submit a practice leave request.",
-      "priority": "Medium",
-      "severity": "Major"
-    },
-    {
-      "tcid": "TC_UI_07",
-      "scenario": "Verify acceptance criterion: Recruitment: View current job vacancies.",
-      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. Navigate to the relevant module.\n5. Perform the action described in the acceptance criterion: Recruitment: View current job vacancies..\n6. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: # Recruitment: View current job vacancies.",
-      "priority": "Medium",
-      "severity": "Major"
-    },
-    {
-      "tcid": "TC_UI_08",
-      "scenario": "Verify acceptance criterion: Time: Review a sample employee timesheet.",
-      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. Navigate to the relevant module.\n5. Perform the action described in the acceptance criterion: Time: Review a sample employee timesheet..\n6. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: # Time: Review a sample employee timesheet.",
-      "priority": "Medium",
-      "severity": "Major"
-    },
-    {
-      "tcid": "TC_UI_09",
-      "scenario": "Verify acceptance criterion: Acceptance Criteria  :",
-      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. Navigate to the relevant module.\n5. Perform the action described in the acceptance criterion: Acceptance Criteria  :.\n6. Verify the expected outcome.",
-      "expected": "The system satisfies the criterion: Acceptance Criteria  :",
+      "scenario": "Verify: Time: Review a sample employee timesheet.",
+      "steps": "1. Navigate to https://opensource-demo.orangehrmlive.com/.\n2. Sign in with username \"Admin\" and password \"admin123\".\n3. Verify login succeeds and the home page loads.\n4. From the top menu bar, click \"Time\".\n5. Open \"Timesheets\" and select an employee.\n6. Verify the timesheet is displayed with the recorded hours.",
+      "expected": "The employee timesheet is displayed with recorded hours.",
       "priority": "Medium",
       "severity": "Major"
     },

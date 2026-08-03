@@ -69,6 +69,183 @@ function extractCredentials(requirements) {
 }
 
 /**
+ * Build detailed, concrete test steps for an acceptance criterion by mapping
+ * the criterion's intent (keywords) to real user actions. Returns a numbered
+ * step list that always starts with the login/launch steps and ends with an
+ * explicit verification.
+ */
+function buildDetailedSteps(scenario, { loginSteps, isOrangeHrm, appName }) {
+  const s = String(scenario || '').toLowerCase();
+  const login = Array.isArray(loginSteps) ? loginSteps.slice() : [];
+  const next = login.length + 1;
+  const actionSteps = [];
+
+  // OrangeHRM module actions
+  if (isOrangeHrm) {
+    if (/\bpim\b/.test(s)) {
+      actionSteps.push(
+        `${next}. From the top menu bar, click "PIM".`,
+        `${next + 1}. Click the "Add" button to open the Add Employee form.`,
+        `${next + 2}. Enter a First Name, Last Name, and a unique Employee Id.`,
+        `${next + 3}. Click "Save" to create the employee record.`,
+        `${next + 4}. Verify the employee is created and the success message is displayed.`
+      );
+    } else if (/\bleave\b/.test(s)) {
+      actionSteps.push(
+        `${next}. From the top menu bar, click "Leave".`,
+        `${next + 1}. Click "Apply" and select the Leave Type, From Date, and To Date.`,
+        `${next + 2}. Add any comments and click "Apply".`,
+        `${next + 3}. Verify the leave request is submitted successfully.`
+      );
+    } else if (/\brecruitment\b/.test(s)) {
+      actionSteps.push(
+        `${next}. From the top menu bar, click "Recruitment".`,
+        `${next + 1}. Navigate to the "Candidates" or "Vacancies" section.`,
+        `${next + 2}. Verify the current job vacancies and candidate list are displayed.`
+      );
+    } else if (/\btime\b/.test(s)) {
+      actionSteps.push(
+        `${next}. From the top menu bar, click "Time".`,
+        `${next + 1}. Open "Timesheets" and select an employee.`,
+        `${next + 2}. Verify the timesheet is displayed with the recorded hours.`
+      );
+    } else {
+      actionSteps.push(
+        `${next}. Navigate to the relevant section of the application.`,
+        `${next + 1}. Perform the action required by: "${scenario}".`,
+        `${next + 2}. Verify the expected result is displayed.`
+      );
+    }
+    return [...login, ...actionSteps].join('\n');
+  }
+
+  // BrowserStack / e-commerce actions
+  if (/\bnavigate to the application\b/.test(s)) {
+    actionSteps.push(
+      `${next}. Open the application URL in a browser.`,
+      `${next + 1}. Wait for the home page to load completely.`,
+      `${next + 2}. Verify the product listings and site header are visible.`
+    );
+  } else if (/\baccess the sign in page\b/.test(s)) {
+    actionSteps.push(
+      `${next}. On the home page, locate the "Sign In" link in the header.`,
+      `${next + 1}. Click "Sign In".`,
+      `${next + 2}. Verify the Sign In page loads with Username and Password fields.`
+    );
+  } else if (/\blog in using valid demo credentials\b/.test(s)) {
+    actionSteps.push(
+      `${next}. On the Sign In page, click the "Username" dropdown and select a valid demo user.`,
+      `${next + 1}. Click the "Password" dropdown and select the matching demo password.`,
+      `${next + 2}. Click "Log In".`,
+      `${next + 3}. Verify the user is redirected to the home page.`
+    );
+  } else if (/\buser name is displayed after successful login\b/.test(s)) {
+    actionSteps.push(
+      `${next}. After logging in, inspect the top-right corner of the header.`,
+      `${next + 1}. Verify the logged-in user name is displayed.`
+    );
+  } else if (/\bno authentication errors\b/.test(s)) {
+    actionSteps.push(
+      `${next}. After logging in with valid credentials, check for error banners or alerts.`,
+      `${next + 1}. Verify no authentication error message is displayed.`
+    );
+  } else if (/\bsearch for a product\b/.test(s)) {
+    actionSteps.push(
+      `${next}. Locate the search box on the home page.`,
+      `${next + 1}. Type a product name (e.g. "iPhone") and submit the search.`,
+      `${next + 2}. Verify matching products are displayed in the results.`
+    );
+  } else if (/\bfilter products by brand\b/.test(s)) {
+    actionSteps.push(
+      `${next}. Locate the brand filter on the product listing page.`,
+      `${next + 1}. Select a brand (e.g. "Apple").`,
+      `${next + 2}. Verify the product list updates to show only that brand.`
+    );
+  } else if (/\bfiltered products are displayed correctly\b/.test(s)) {
+    actionSteps.push(
+      `${next}. Apply a brand or category filter.`,
+      `${next + 1}. Inspect each product card in the results.`,
+      `${next + 2}. Verify all displayed products match the applied filter.`
+    );
+  } else if (/\bsearch and filter results are updated without page errors\b/.test(s)) {
+    actionSteps.push(
+      `${next}. Perform a search and then apply a brand filter.`,
+      `${next + 1}. Watch the results area as it updates.`,
+      `${next + 2}. Verify the results update in place with no page errors or console errors.`
+    );
+  } else if (/\bproduct details remain accessible after filtering\b/.test(s)) {
+    actionSteps.push(
+      `${next}. Apply a brand filter to the product list.`,
+      `${next + 1}. Click on any filtered product card.`,
+      `${next + 2}. Verify the product detail page opens and shows full details.`
+    );
+  } else if (/\bselect any available product\b/.test(s)) {
+    actionSteps.push(
+      `${next}. From the product listing, click on a product card.`,
+      `${next + 1}. Verify the product detail page opens.`,
+      `${next + 2}. Verify the product name, price, and image are displayed.`
+    );
+  } else if (/\badd the selected product to the cart\b/.test(s)) {
+    actionSteps.push(
+      `${next}. On a product detail page, click "Add to Cart".`,
+      `${next + 1}. Verify the product is added without errors.`
+    );
+  } else if (/\bcart icon updates with the correct item count\b/.test(s)) {
+    actionSteps.push(
+      `${next}. Add a product to the cart.`,
+      `${next + 1}. Inspect the cart icon in the header.`,
+      `${next + 2}. Verify the cart icon shows the correct item count.`
+    );
+  } else if (/\badded product appears in the shopping cart\b/.test(s)) {
+    actionSteps.push(
+      `${next}. Add a product to the cart.`,
+      `${next + 1}. Open the shopping cart.`,
+      `${next + 2}. Verify the added product appears in the cart list.`
+    );
+  } else if (/\bproduct price and quantity are displayed correctly\b/.test(s)) {
+    actionSteps.push(
+      `${next}. Open the shopping cart containing the added product.`,
+      `${next + 1}. Verify the product price matches the listing price.`,
+      `${next + 2}. Verify the quantity is displayed correctly.`
+    );
+  } else {
+    actionSteps.push(
+      `${next}. Perform the action required by: "${scenario}".`,
+      `${next + 1}. Verify the expected result is displayed.`
+    );
+  }
+  return [...login, ...actionSteps].join('\n');
+}
+
+/** Map an acceptance criterion to a concrete expected-result statement. */
+function expectedForScenario(scenario) {
+  const s = String(scenario || '').toLowerCase();
+  const table = [
+    [/\bnavigate to the application\b/, 'The application loads and the home page is displayed.'],
+    [/\baccess the sign in page\b/, 'The Sign In page is displayed with Username and Password fields.'],
+    [/\blog in using valid demo credentials\b/, 'The user is logged in and redirected to the home page.'],
+    [/\buser name is displayed\b/, 'The logged-in user name is visible in the header.'],
+    [/\bno authentication errors\b/, 'No authentication error message is displayed.'],
+    [/\bsearch for a product\b/, 'Matching products are displayed in the search results.'],
+    [/\bfilter products by brand\b/, 'The product list is filtered to the selected brand.'],
+    [/\bfiltered products are displayed correctly\b/, 'All displayed products match the applied filter.'],
+    [/\bresults are updated without page errors\b/, 'Search/filter results update in place with no errors.'],
+    [/\bproduct details remain accessible\b/, 'Product details open correctly after filtering.'],
+    [/\bselect any available product\b/, 'The product detail page opens with full details.'],
+    [/\badd the selected product to the cart\b/, 'The product is added to the cart successfully.'],
+    [/\bcart icon updates with the correct item count\b/, 'The cart icon shows the correct item count.'],
+    [/\badded product appears in the shopping cart\b/, 'The added product is visible in the shopping cart.'],
+    [/\bproduct price and quantity are displayed correctly\b/, 'The cart shows the correct price and quantity.'],
+    [/\bpim\b/, 'The employee record is created successfully in the PIM module.'],
+    [/\bleave\b/, 'The leave request is submitted successfully.'],
+    [/\brecruitment\b/, 'The recruitment vacancies/candidates are displayed.'],
+    [/\btime\b/, 'The employee timesheet is displayed with recorded hours.'],
+  ];
+  const hit = table.find(([re]) => re.test(s));
+  return hit ? hit[1] : `The action for "${scenario}" completes successfully with the expected result displayed.`;
+}
+
+/**
  * Derive test cases from the requirement acceptance criteria + title.
  * The steps are app-aware: they use the base URL and credentials parsed from
  * the JIRA ticket, so SCRUM-10 (OrangeHRM) and SCRUM-32 (BrowserStack) get
@@ -115,21 +292,24 @@ function generateTestCases(requirements) {
     severity: 'Critical',
   });
 
-  // Map each acceptance criterion to a UI smoke test.
+  // Map each acceptance criterion to a UI test case with detailed, concrete
+  // steps derived from the criterion's intent (not a vague placeholder).
   criteria.forEach((criterion, idx) => {
-    const c = String(criterion || '').toLowerCase();
     const uiIdx = uiCases.length + 1;
-    const scenario = criterion.replace(/^[\s]*([-*•]|\d+[.)]|#)\s+/, '');
+    const scenario = criterion.replace(/^[\s]*([-*•]|\d+[.)]|#)\s+/, '').trim();
+    // Skip structural / non-scenario criteria: the "Acceptance Criteria :"
+    // header, and access-detail lines (URL / Username / Password) that are
+    // credentials, not test scenarios.
+    const sLower = scenario.toLowerCase();
+    if (!scenario) return;
+    if (/^acceptance criteria/i.test(sLower)) return;
+    if (/^(url|username|user name|password)\b/.test(sLower)) return;
+
     uiCases.push({
       tcid: `TC_UI_0${uiIdx}`,
-      scenario: `Verify acceptance criterion: ${scenario}`,
-      steps: [
-        ...loginSteps,
-        ...(isOrangeHrm ? [`${loginSteps.length + 1}. Navigate to the relevant module.`] : []),
-        `${loginSteps.length + (isOrangeHrm ? 2 : 1)}. Perform the action described in the acceptance criterion: ${scenario}.`,
-        `${loginSteps.length + (isOrangeHrm ? 3 : 2)}. Verify the expected outcome.`,
-      ].join('\n'),
-      expected: `The system satisfies the criterion: ${criterion}`,
+      scenario: `Verify: ${scenario}`,
+      steps: buildDetailedSteps(scenario, { loginSteps, isOrangeHrm, appName }),
+      expected: expectedForScenario(scenario),
       priority: 'Medium',
       severity: 'Major',
     });
@@ -137,7 +317,7 @@ function generateTestCases(requirements) {
     // API test — only for OrangeHRM (which has a backend); external apps like
     // BrowserStack have no local API to test.
     if (isOrangeHrm) {
-      const apiEndpoint = apiEndpointForModule(c);
+      const apiEndpoint = apiEndpointForModule(scenario.toLowerCase());
       if (apiEndpoint) {
         const alreadyGenerated = apiCases.some(
           x => x.endpoint === apiEndpoint && x.method === 'GET'

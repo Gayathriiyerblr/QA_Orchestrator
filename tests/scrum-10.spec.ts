@@ -14,67 +14,35 @@ test.describe('SCRUM-10: Explore_OrangeHRM_source UI tests', () => {
     await expect(page.locator('body')).toBeVisible();
   });
 
-  test('TC_UI_02: Verify acceptance criterion: URL: [https://opensource-demo.orangehrmlive.com/|https://opensource-demo.orangehrmlive.com/|smart-link]', async ({ page }) => {
+  test('TC_UI_02: Verify: PIM: Create a test employee record.', async ({ page }) => {
     const pageObj = new ExploreOrangeHRMSourcePage(page);
     await pageObj.login();
     await pageObj.expectLoaded();
-    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. Navigate to the relevant module. | 5. Perform the action described in the acceptance criterion: URL: [https://opensource-demo.orangehrmlive.com/|https://opensource-demo.orangehrmlive.com/|smart-link]. | 6. Verify the expected outcome.
+    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. From the top menu bar, click "PIM". | 5. Click the "Add" button to open the Add Employee form. | 6. Enter a First Name, Last Name, and a unique Employee Id. | 7. Click "Save" to create the employee record. | 8. Verify the employee is created and the success message is displayed.
     await expect(page.locator('body')).toBeVisible();
   });
 
-  test('TC_UI_03: Verify acceptance criterion: Username: Admin', async ({ page }) => {
+  test('TC_UI_03: Verify: Leave: Submit a practice leave request.', async ({ page }) => {
     const pageObj = new ExploreOrangeHRMSourcePage(page);
     await pageObj.login();
     await pageObj.expectLoaded();
-    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. Navigate to the relevant module. | 5. Perform the action described in the acceptance criterion: Username: Admin. | 6. Verify the expected outcome.
+    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. From the top menu bar, click "Leave". | 5. Click "Apply" and select the Leave Type, From Date, and To Date. | 6. Add any comments and click "Apply". | 7. Verify the leave request is submitted successfully.
     await expect(page.locator('body')).toBeVisible();
   });
 
-  test('TC_UI_04: Verify acceptance criterion: Password: admin123', async ({ page }) => {
+  test('TC_UI_04: Verify: Recruitment: View current job vacancies.', async ({ page }) => {
     const pageObj = new ExploreOrangeHRMSourcePage(page);
     await pageObj.login();
     await pageObj.expectLoaded();
-    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. Navigate to the relevant module. | 5. Perform the action described in the acceptance criterion: Password: admin123. | 6. Verify the expected outcome.
+    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. From the top menu bar, click "Recruitment". | 5. Navigate to the "Candidates" or "Vacancies" section. | 6. Verify the current job vacancies and candidate list are displayed.
     await expect(page.locator('body')).toBeVisible();
   });
 
-  test('TC_UI_05: Verify acceptance criterion: PIM: Create a test employee record.', async ({ page }) => {
+  test('TC_UI_05: Verify: Time: Review a sample employee timesheet.', async ({ page }) => {
     const pageObj = new ExploreOrangeHRMSourcePage(page);
     await pageObj.login();
     await pageObj.expectLoaded();
-    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. Navigate to the relevant module. | 5. Perform the action described in the acceptance criterion: PIM: Create a test employee record.. | 6. Verify the expected outcome.
-    await expect(page.locator('body')).toBeVisible();
-  });
-
-  test('TC_UI_06: Verify acceptance criterion: Leave: Submit a practice leave request.', async ({ page }) => {
-    const pageObj = new ExploreOrangeHRMSourcePage(page);
-    await pageObj.login();
-    await pageObj.expectLoaded();
-    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. Navigate to the relevant module. | 5. Perform the action described in the acceptance criterion: Leave: Submit a practice leave request.. | 6. Verify the expected outcome.
-    await expect(page.locator('body')).toBeVisible();
-  });
-
-  test('TC_UI_07: Verify acceptance criterion: Recruitment: View current job vacancies.', async ({ page }) => {
-    const pageObj = new ExploreOrangeHRMSourcePage(page);
-    await pageObj.login();
-    await pageObj.expectLoaded();
-    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. Navigate to the relevant module. | 5. Perform the action described in the acceptance criterion: Recruitment: View current job vacancies.. | 6. Verify the expected outcome.
-    await expect(page.locator('body')).toBeVisible();
-  });
-
-  test('TC_UI_08: Verify acceptance criterion: Time: Review a sample employee timesheet.', async ({ page }) => {
-    const pageObj = new ExploreOrangeHRMSourcePage(page);
-    await pageObj.login();
-    await pageObj.expectLoaded();
-    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. Navigate to the relevant module. | 5. Perform the action described in the acceptance criterion: Time: Review a sample employee timesheet.. | 6. Verify the expected outcome.
-    await expect(page.locator('body')).toBeVisible();
-  });
-
-  test('TC_UI_09: Verify acceptance criterion: Acceptance Criteria  :', async ({ page }) => {
-    const pageObj = new ExploreOrangeHRMSourcePage(page);
-    await pageObj.login();
-    await pageObj.expectLoaded();
-    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. Navigate to the relevant module. | 5. Perform the action described in the acceptance criterion: Acceptance Criteria  :. | 6. Verify the expected outcome.
+    // Generated from JIRA requirement steps: 1. Navigate to https://opensource-demo.orangehrmlive.com/. | 2. Sign in with username "Admin" and password "admin123". | 3. Verify login succeeds and the home page loads. | 4. From the top menu bar, click "Time". | 5. Open "Timesheets" and select an employee. | 6. Verify the timesheet is displayed with the recorded hours.
     await expect(page.locator('body')).toBeVisible();
   });
 

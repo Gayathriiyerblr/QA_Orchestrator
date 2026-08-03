@@ -1,0 +1,9 @@
+Generate detailed test steps from acceptance criteria
+
+Replace the vague "Perform the action described in the acceptance
+criterion" placeholder with concrete, app-aware step-by-step actions
+(login, navigate, search, filter, add to cart, verify) derived from each
+criterion's intent. Skip structural criteria (Acceptance Criteria header,
+URL/Username/Password access details) that are not test scenarios.
+
+Co-authored-by: CommandCodeBot <noreply@commandcode.ai>
