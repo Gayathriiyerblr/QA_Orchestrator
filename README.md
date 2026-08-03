@@ -1,5 +1,7 @@
 # 🚀 OrchestrAI — Enterprise AI QA Orchestration
 
+**Authored By — Gayathri**
+
 Welcome to **OrchestrAI**! This is a fully autonomous, AI-powered Quality Assurance automation system. It orchestrates the entire STLC (Software Testing Life Cycle) using Large Language Models (LLMs), Playwright for UI automation, and a suite of specialized agentic tools.
 
 ## ✨ Features
