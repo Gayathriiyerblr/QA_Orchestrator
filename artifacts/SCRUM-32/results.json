@@ -1,0 +1,101 @@
+{
+  "jiraId": "SCRUM-32",
+  "suite": "Regression",
+  "timestamp": "2026-08-03T19:14:43.888Z",
+  "total": 18,
+  "passed": 17,
+  "failed": 1,
+  "results": [
+    {
+      "tcid": "TC_UI_01",
+      "status": "PASS",
+      "duration": "4.6s"
+    },
+    {
+      "tcid": "TC_UI_02",
+      "status": "PASS",
+      "duration": "5.2s"
+    },
+    {
+      "tcid": "TC_UI_03",
+      "status": "PASS",
+      "duration": "4.3s"
+    },
+    {
+      "tcid": "TC_UI_04",
+      "status": "PASS",
+      "duration": "4.3s"
+    },
+    {
+      "tcid": "TC_UI_05",
+      "status": "PASS",
+      "duration": "5.7s"
+    },
+    {
+      "tcid": "TC_UI_06",
+      "status": "PASS",
+      "duration": "4.6s"
+    },
+    {
+      "tcid": "TC_UI_07",
+      "status": "PASS",
+      "duration": "4.7s"
+    },
+    {
+      "tcid": "TC_UI_08",
+      "status": "PASS",
+      "duration": "4.9s"
+    },
+    {
+      "tcid": "TC_UI_09",
+      "status": "PASS",
+      "duration": "4.4s"
+    },
+    {
+      "tcid": "TC_UI_010",
+      "status": "PASS",
+      "duration": "4.3s"
+    },
+    {
+      "tcid": "TC_UI_011",
+      "status": "PASS",
+      "duration": "4.3s"
+    },
+    {
+      "tcid": "TC_UI_012",
+      "status": "PASS",
+      "duration": "4.5s"
+    },
+    {
+      "tcid": "TC_UI_013",
+      "status": "PASS",
+      "duration": "4.7s"
+    },
+    {
+      "tcid": "TC_UI_014",
+      "status": "PASS",
+      "duration": "4.8s"
+    },
+    {
+      "tcid": "TC_UI_015",
+      "status": "PASS",
+      "duration": "4.5s"
+    },
+    {
+      "tcid": "TC_UI_016",
+      "status": "PASS",
+      "duration": "4.8s"
+    },
+    {
+      "tcid": "TC_UI_HEAL: Verify page renders with a resilient locator (self-heal demo)",
+      "status": "PASS",
+      "duration": "4.6s"
+    },
+    {
+      "tcid": "TC_UI_BUG: Verify the application exposes a session timeout notice",
+      "status": "FAIL",
+      "duration": "7.5s",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.session-timeout-notice')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 3000ms\n  - waiting for locator('.session-timeout-notice')\n"
+    }
+  ]
+}

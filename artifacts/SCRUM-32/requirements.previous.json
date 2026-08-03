@@ -1,0 +1,49 @@
+{
+  "jiraId": "SCRUM-32",
+  "title": "BrowserStack Demo – Functional Validation for Training & Demo",
+  "description": "h2. Objective\n\nValidate the core e-commerce functionalities of the BrowserStack Demo application to support the upcoming training and demo session.\n\nh2. Environment\n\n*Application:* BrowserStack Demo\n\n*URL:* [https://bstackdemo.com/|https://bstackdemo.com/|smart-link] \n\n*Username:* {{demouser}}\n\n*Password:* {{testingisfun99}} _(Select these values from the Username and Password dropdowns on the Sign In page.)_\n\n----\n\nh2. Scenario 1: Login to the Application\n\nh3. Acceptance Criteria\n\n* User can navigate to the application.\n* User can access the Sign In page.\n* User can log in using valid demo credentials.\n* User name is displayed after successful login.\n* No authentication errors are displayed.\n\n----\n\nh2. Scenario 2: Search and Filter Products\n\nh3. Acceptance Criteria\n\n* User can search for a product using the search functionality.\n* User can filter products by brand.\n* Filtered products are displayed correctly.\n* Search and filter results are updated without page errors.\n* Product details remain accessible after filtering.\n\n----\n\nh2. Scenario 3: Add Product to Shopping Cart\n\nh3. Acceptance Criteria\n\n* User can select any available product.\n* User can add the selected product to the cart.\n* Cart icon updates with the correct item count.\n* Added product appears in the shopping cart.\n* Product price and quantity are displayed correctly.",
+  "acceptanceCriteria": [
+    "* User can navigate to the application.",
+    "* User can access the Sign In page.",
+    "* User can log in using valid demo credentials.",
+    "* User name is displayed after successful login.",
+    "* No authentication errors are displayed.",
+    "* User can search for a product using the search functionality.",
+    "* User can filter products by brand.",
+    "* Filtered products are displayed correctly.",
+    "* Search and filter results are updated without page errors.",
+    "* Product details remain accessible after filtering.",
+    "* User can select any available product.",
+    "* User can add the selected product to the cart.",
+    "* Cart icon updates with the correct item count.",
+    "* Added product appears in the shopping cart.",
+    "* Product price and quantity are displayed correctly."
+  ],
+  "source": "JIRA",
+  "jira": {
+    "issuetype": "Story",
+    "status": "To Do",
+    "priority": "Medium",
+    "labels": [],
+    "components": [],
+    "url": "https://gayathriiyerbloreiihr.atlassian.net/browse/SCRUM-32"
+  },
+  "analysis": {
+    "module": "BrowserStack Demo Functional",
+    "complexity": "Medium",
+    "dependencies": []
+  },
+  "bugs": [
+    {
+      "bugId": "SCRUM-35",
+      "tcid": "TC_UI_BUG: Verify the application exposes a session timeout notice",
+      "title": "[BUG] Test Case TC_UI_BUG: Verify the application exposes a session timeout notice failed",
+      "description": "Test case TC_UI_BUG: Verify the application exposes a session timeout notice failed during automated execution.\nError: Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.session-timeout-notice')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 3000ms\n  - waiting for locator('.session-timeout-notice')\n",
+      "severity": "High",
+      "status": "Open",
+      "jiraUrl": "https://gayathriiyerbloreiihr.atlassian.net/browse/SCRUM-35",
+      "loggedToJira": true
+    }
+  ],
+  "generatedAt": "2026-08-03T18:45:57.080Z"
+}

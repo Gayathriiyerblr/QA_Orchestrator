@@ -1,0 +1,71 @@
+{
+  "jiraId": "SCRUM-10",
+  "suite": "Regression",
+  "timestamp": "2026-08-03T19:28:34.230Z",
+  "total": 12,
+  "passed": 11,
+  "failed": 1,
+  "results": [
+    {
+      "tcid": "TC_API_01",
+      "status": "PASS",
+      "duration": "0.8s"
+    },
+    {
+      "tcid": "TC_API_BUG: PUT /api/personal-details",
+      "status": "FAIL",
+      "duration": "0.0s",
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 200"
+    },
+    {
+      "tcid": "TC_UI_01",
+      "status": "PASS",
+      "duration": "10.7s"
+    },
+    {
+      "tcid": "TC_UI_02",
+      "status": "PASS",
+      "duration": "5.4s"
+    },
+    {
+      "tcid": "TC_UI_03",
+      "status": "PASS",
+      "duration": "5.2s"
+    },
+    {
+      "tcid": "TC_UI_04",
+      "status": "PASS",
+      "duration": "5.4s"
+    },
+    {
+      "tcid": "TC_UI_05",
+      "status": "PASS",
+      "duration": "6.1s"
+    },
+    {
+      "tcid": "TC_UI_06",
+      "status": "PASS",
+      "duration": "5.6s"
+    },
+    {
+      "tcid": "TC_UI_07",
+      "status": "PASS",
+      "duration": "5.2s"
+    },
+    {
+      "tcid": "TC_UI_08",
+      "status": "PASS",
+      "duration": "5.3s"
+    },
+    {
+      "tcid": "TC_UI_09",
+      "status": "PASS",
+      "duration": "8.0s"
+    },
+    {
+      "tcid": "TC_UI_HEAL: Verify page renders with a resilient locator (self-heal demo)",
+      "status": "PASS",
+      "duration": "8.6s"
+    }
+  ]
+}

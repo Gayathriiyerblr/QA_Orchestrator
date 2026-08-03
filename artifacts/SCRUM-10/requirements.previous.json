@@ -1,0 +1,42 @@
+{
+  "jiraId": "SCRUM-10",
+  "title": "Explore OrangeHRM open-source platform modules",
+  "description": "This is a  ticket for our upcoming training and demo session on the OrangeHRM open-source system. Use the credentials below to log into the public sandbox environment and test the basic HR modules.\n\n*Access Details:*\n\n* URL: [https://opensource-demo.orangehrmlive.com/|https://opensource-demo.orangehrmlive.com/|smart-link] \n* Username: Admin\n* Password: admin123\n\n*Testing Scope:*\nPlease log in and perform at least one action in the following modules:\n\n# PIM: Create a test employee record.\n# Leave: Submit a practice leave request.\n# Recruitment: View current job vacancies.\n# Time: Review a sample employee timesheet.\n\nAcceptance Criteria  : \n\n||Module||Acceptance Criteria||\n|*Login*|User can successfully log in to the OrangeHRM sandbox using the provided credentials (Admin / admin123) and is redirected to the dashboard without errors.|\n|*PIM – Create Employee*|* User can navigate to *PIM* module.- User can create a new employee by entering the mandatory fields.- Employee record is successfully saved.- Newly created employee is visible in the employee list/search results.|\n|*Leave – Submit Leave Request*|* User can navigate to the *Leave* module.- User can create a leave request by selecting a leave type and valid date(s).- Leave request is submitted successfully.- Submitted leave request appears in the leave records/history with the appropriate status.|\n|*Recruitment – View Vacancies*|* User can navigate to the *Recruitment* module.- User can access the *Vacancies* page.- Existing job vacancies are displayed.- Vacancy details (e.g., Job Title, Hiring Manager, Status) are visible.|\n|*Time – Review Timesheet*|* User can navigate to the *Time* module.- User can access an employee timesheet.- Timesheet details (dates, project/activity, hours worked) are displayed without errors.- User can review the timesheet successfully.|",
+  "acceptanceCriteria": [
+    "* URL: [https://opensource-demo.orangehrmlive.com/|https://opensource-demo.orangehrmlive.com/|smart-link]",
+    "* Username: Admin",
+    "* Password: admin123",
+    "# PIM: Create a test employee record.",
+    "# Leave: Submit a practice leave request.",
+    "# Recruitment: View current job vacancies.",
+    "# Time: Review a sample employee timesheet.",
+    "Acceptance Criteria  :"
+  ],
+  "source": "JIRA",
+  "jira": {
+    "issuetype": "Story",
+    "status": "In Progress",
+    "priority": "Medium",
+    "labels": [],
+    "components": [],
+    "url": "https://gayathriiyerbloreiihr.atlassian.net/browse/SCRUM-10"
+  },
+  "analysis": {
+    "module": "Explore OrangeHRM source",
+    "complexity": "Medium",
+    "dependencies": []
+  },
+  "bugs": [
+    {
+      "bugId": "SCRUM-36",
+      "tcid": "TC_API_BUG: PUT /api/personal-details",
+      "title": "[BUG] Test Case TC_API_BUG: PUT /api/personal-details failed",
+      "description": "Test case TC_API_BUG: PUT /api/personal-details failed during automated execution.\nError: Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 200",
+      "severity": "High",
+      "status": "Open",
+      "jiraUrl": "https://gayathriiyerbloreiihr.atlassian.net/browse/SCRUM-36",
+      "loggedToJira": true
+    }
+  ],
+  "generatedAt": "2026-08-03T19:06:24.749Z"
+}

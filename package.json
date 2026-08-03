@@ -17,10 +17,10 @@
   "dependencies": {
     "@faker-js/faker": "^10.4.0",
     "cors": "^2.8.6",
-    "exceljs": "^4.4.0",
+    "exceljs": "^3.4.0",
     "express": "^5.2.1",
-    "faker": "^6.6.6",
-    "nodemailer": "^8.0.6",
+    "faker": "^5.5.3",
+    "nodemailer": "^9.0.3",
     "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3"
   }

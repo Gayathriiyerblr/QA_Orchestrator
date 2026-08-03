@@ -9,3 +9,4 @@ blob-report/
 playwright/.cache/
 *.log
 .DS_Store
+.commandcode/

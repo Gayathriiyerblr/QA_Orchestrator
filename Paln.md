@@ -1,4 +1,4 @@
-# 🚀 Enterprise AI QA Orchestration Plan (Antigravity + MCP)
+# 🚀 OrchestrAI — Enterprise AI QA Orchestration Plan
 
 ---
 
@@ -19,7 +19,7 @@ Build a fully autonomous, AI-powered QA system that performs:
 
 # 🧠 Core Architecture
 ```plaintext
-Antigravity (Orchestrator)
+OrchestrAI (Orchestrator)
         ↓
 LLM Master Agent (Decision Engine)
         ↓

@@ -1,0 +1,8 @@
+{
+  "insights": {
+    "TC_API_BUG: PUT /api/personal-details": {
+      "rootCause": "Locator timeout / assertion mismatch detected. DOM structure or API contract may have changed.",
+      "suggestion": "Review the failing test case, locator strategy, and expected vs actual values."
+    }
+  }
+}

@@ -28,7 +28,7 @@ const Dashboard = () => {
   return (
     <div style={styles.container}>
       <header style={styles.header}>
-        <h1 style={styles.title}>Antigravity AI<span style={styles.subtitle}>QA Orchestration</span></h1>
+        <h1 style={styles.title}>OrchestrAI<span style={styles.subtitle}>Orchestration Dashboard</span></h1>
         <div style={styles.agentStatus}>
           <div style={{ ...styles.pulse, backgroundColor: data.agentStatus === 'Active' ? '#4ade80' : '#94a3b8' }}></div>
           Agent Status: {data.agentStatus}

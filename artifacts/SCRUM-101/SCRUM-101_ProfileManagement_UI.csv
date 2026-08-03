@@ -1,4 +1,0 @@
-TCID,Scenario,Steps,Expected,Priority,Severity
-TC_UI_01,Update Personal Details Success,"1. Login\n2. Click My Info\n3. Update Nickname\n4. Click Save",Success toast message displayed,High,Critical
-TC_UI_02,Attempt Save without Changes,"1. Login\n2. Click My Info\n3. Click Save",No error - data remains same,Medium,Major
-TC_UI_03,Validation on Long Nickname,"1. Login\n2. Click My Info\n3. Enter 200+ chars in Nickname\n4. Click Save",Validation error message,High,Major

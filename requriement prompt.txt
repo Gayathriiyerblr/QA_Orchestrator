@@ -1,20 +1,29 @@
-user give the requirements from manually and you have to create excel file and create sheet and  generate test cases and add on that sheet and then execute those test cases by using playwright mcp and generate execution report in detail and if there is any bug then create jira bug and store in document with screenshot, generate release note in document and store in release note folder, and in last detail report, confirmation mail sent on bhaumik41294@gmail.com mail id with required attachments, generate API Test cases and store in sheet also.
+# Manual Requirement Input (Offline Fallback)
 
-requirements 
+This file is used by the Requirement Agent (scripts/generate_requirements.js)
+ONLY when the live JIRA connection is unavailable (no .env credentials, JIRA
+down, or network blocked). When JIRA is reachable, requirements are always
+fetched from the ticket and this file is ignored.
 
-1. open https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
-2. login into system with valid credentials
-Username : Admin
-Password : admin123
-3. Click on PIM from side menu
-4. click on + add button
-5. Enter First Name
-6. Enter Last Name
-7. Enter Employee Id - Add randomly and store 
-8. Click on Save
+To use this fallback for a ticket, replace the content below with the
+requirements for that ticket. The Requirement Agent will produce
+artifacts/{JIRA_ID}/requirements.json from it.
 
-after click on save, add employee information in excel sheet with employee sheet name
+---
 
-Add 10 Employee first one by one 
-go to https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList and search employee by Employee Id 
+## SCRUM-10 — Explore OrangeHRM open-source platform modules
 
+### Objective
+Explore the OrangeHRM open-source system (public sandbox) and perform at least
+one action in each of the core HR modules for the training/demo session.
+
+### Access
+- URL: https://opensource-demo.orangehrmlive.com/
+- Username: Admin
+- Password: admin123
+
+### Testing Scope
+1. PIM: Create a test employee record.
+2. Leave: Submit a practice leave request.
+3. Recruitment: View current job vacancies.
+4. Time: Review a sample employee timesheet.

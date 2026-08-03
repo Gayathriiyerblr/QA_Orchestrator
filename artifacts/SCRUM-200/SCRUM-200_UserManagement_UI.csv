@@ -1,4 +1,0 @@
-TCID,Scenario,Steps,Expected,Priority,Severity
-TC_UI_201,Add New Admin User,"1. Login\n2. Admin -> User Mgmt\n3. Click Add\n4. Submit form",User added successfully,High,Critical
-TC_UI_202,Search Existing User,"1. Admin -> User Mgmt\n2. Enter Username\n3. Click Search",Record found in results table,High,Major
-TC_UI_203,Duplicate Username Validation,"1. Admin -> User Mgmt\n2. Add User with existing name",Error message: 'Already exists',Medium,Major
