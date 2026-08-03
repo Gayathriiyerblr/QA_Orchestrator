@@ -21,7 +21,7 @@ Welcome to **OrchestrAI**! This is a fully autonomous, AI-powered Quality Assura
 - `artifacts/`: Generated outputs including execution logs, HTML reports, JSON test sets, and bug screenshots.
 - `release_notes/`: Houses auto-generated release notes for execution runs.
 - `UserGuide.md`: Detailed step-by-step documentation on how to run, monitor, and troubleshoot the system.
-- `Paln.md`: The core architecture, flow, and agent mapping plan.
+- `plan.md`: The core architecture, flow, and agent mapping plan.
 
 ## 🚀 Getting Started
 
