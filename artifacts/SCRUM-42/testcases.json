@@ -1,0 +1,107 @@
+{
+  "jiraId": "SCRUM-42",
+  "module": "Edit_Employee_Personal",
+  "app": {
+    "baseUrl": null,
+    "username": null,
+    "password": null,
+    "site": "OrangeHRM",
+    "isOrangeHrm": true
+  },
+  "generatedAt": "2026-08-04T10:38:38.940Z",
+  "source": "JIRA",
+  "ui": [
+    {
+      "tcid": "TC_UI_01",
+      "scenario": "Verify Edit Employee Personal loads and is accessible",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.",
+      "expected": "The application loads successfully and is accessible.",
+      "priority": "High",
+      "severity": "Critical"
+    },
+    {
+      "tcid": "TC_UI_02",
+      "scenario": "Verify: User can navigate to the *PIM* module.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"PIM\".\n5. Click the \"Add\" button to open the Add Employee form.\n6. Enter a First Name, Last Name, and a unique Employee Id.\n7. Click \"Save\" to create the employee record.\n8. Verify the employee is created and the success message is displayed.",
+      "expected": "The employee record is created successfully in the PIM module.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_03",
+      "scenario": "Verify: User can search for and open an existing employee record.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. Navigate to the relevant section of the application.\n5. Perform the action required by: \"User can search for and open an existing employee record.\".\n6. Verify the expected result is displayed.",
+      "expected": "The action for \"User can search for and open an existing employee record.\" completes successfully with the expected result displayed.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_04",
+      "scenario": "Verify: User can edit one or more editable employee details.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. Navigate to the relevant section of the application.\n5. Perform the action required by: \"User can edit one or more editable employee details.\".\n6. Verify the expected result is displayed.",
+      "expected": "The action for \"User can edit one or more editable employee details.\" completes successfully with the expected result displayed.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_05",
+      "scenario": "Verify: User can save the updated information successfully.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. Navigate to the relevant section of the application.\n5. Perform the action required by: \"User can save the updated information successfully.\".\n6. Verify the expected result is displayed.",
+      "expected": "The action for \"User can save the updated information successfully.\" completes successfully with the expected result displayed.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_06",
+      "scenario": "Verify: A success confirmation message is displayed.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. Navigate to the relevant section of the application.\n5. Perform the action required by: \"A success confirmation message is displayed.\".\n6. Verify the expected result is displayed.",
+      "expected": "The action for \"A success confirmation message is displayed.\" completes successfully with the expected result displayed.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_07",
+      "scenario": "Verify: Updated details persist after refreshing the page or reopening the employee record.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. Navigate to the relevant section of the application.\n5. Perform the action required by: \"Updated details persist after refreshing the page or reopening the employee record.\".\n6. Verify the expected result is displayed.",
+      "expected": "The action for \"Updated details persist after refreshing the page or reopening the employee record.\" completes successfully with the expected result displayed.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_08",
+      "scenario": "Verify: No validation or application errors are displayed during the update.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. Navigate to the relevant section of the application.\n5. Perform the action required by: \"No validation or application errors are displayed during the update.\".\n6. Verify the expected result is displayed.",
+      "expected": "The action for \"No validation or application errors are displayed during the update.\" completes successfully with the expected result displayed.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_HEAL",
+      "scenario": "Verify page renders with a resilient locator (self-heal demo)",
+      "steps": "1. Launch the application.\n2. Wait for the main content area using the page container.\n3. Verify the page is visible.",
+      "expected": "The page content is rendered and visible.",
+      "priority": "Medium",
+      "severity": "Major",
+      "healable": true
+    }
+  ],
+  "api": [
+    {
+      "tcid": "TC_API_01",
+      "endpoint": "/api/results",
+      "method": "GET",
+      "payload": "{}",
+      "expectedCode": "200",
+      "validation": "Response returns HTTP 200 and verifies the module is reachable"
+    },
+    {
+      "tcid": "TC_API_BUG",
+      "endpoint": "/api/personal-details",
+      "method": "PUT",
+      "payload": "{\"nickname\":\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}",
+      "expectedCode": "400",
+      "validation": "Server rejects nicknames longer than 30 characters (known bug: backend accepts them)",
+      "knownBug": true
+    }
+  ]
+}

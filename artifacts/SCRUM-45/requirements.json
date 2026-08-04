@@ -1,0 +1,30 @@
+{
+  "jiraId": "SCRUM-45",
+  "title": "Edit an Existing Leave Request in Orange HRM website",
+  "description": "h3. *Description*\n\nNavigate to an existing leave request (where permitted) and modify the leave dates or leave type, then save the changes.\n\nh3. *Acceptance Criteria*\n\n* User can navigate to the *Leave* module.\n* User can locate an existing leave request that is eligible for modification.\n* User can edit the leave request details (e.g., leave dates or leave type).\n* User can save the updated leave request successfully.\n* A success confirmation message is displayed.\n* Updated leave details are reflected in the Leave List/History.\n* No application errors or validation issues are encountered during the update.\n\n{quote}*Note:* Depending on the OrangeHRM demo environment, editing an approved leave request may not be permitted. If editing is restricted, this scenario can be replaced with editing another entity such as a job vacancy or employee contact details.{quote}",
+  "acceptanceCriteria": [
+    "* User can navigate to the *Leave* module.",
+    "* User can locate an existing leave request that is eligible for modification.",
+    "* User can edit the leave request details (e.g., leave dates or leave type).",
+    "* User can save the updated leave request successfully.",
+    "* A success confirmation message is displayed.",
+    "* Updated leave details are reflected in the Leave List/History.",
+    "* No application errors or validation issues are encountered during the update."
+  ],
+  "source": "JIRA",
+  "jira": {
+    "issuetype": "Story",
+    "status": "To Do",
+    "priority": "Medium",
+    "labels": [],
+    "components": [],
+    "url": "https://gayathriiyerbloreiihr.atlassian.net/browse/SCRUM-45"
+  },
+  "analysis": {
+    "module": "Edit Existing Leave",
+    "complexity": "Medium",
+    "dependencies": []
+  },
+  "bugs": [],
+  "generatedAt": "2026-08-04T10:56:08.621Z"
+}

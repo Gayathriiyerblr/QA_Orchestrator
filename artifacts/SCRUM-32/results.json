@@ -1,96 +1,101 @@
 {
   "jiraId": "SCRUM-32",
   "suite": "Regression",
-  "timestamp": "2026-08-03T19:52:12.904Z",
+  "timestamp": "2026-08-04T07:13:09.593Z",
   "total": 17,
-  "passed": 16,
-  "failed": 1,
+  "passed": 11,
+  "failed": 6,
   "results": [
     {
       "tcid": "TC_UI_01",
       "status": "PASS",
-      "duration": "4.9s"
+      "duration": "7.4s"
     },
     {
       "tcid": "TC_UI_02",
       "status": "PASS",
-      "duration": "3.8s"
+      "duration": "7.3s"
     },
     {
       "tcid": "TC_UI_03",
       "status": "PASS",
-      "duration": "3.7s"
+      "duration": "7.8s"
     },
     {
       "tcid": "TC_UI_04",
       "status": "PASS",
-      "duration": "3.7s"
+      "duration": "7.7s"
     },
     {
       "tcid": "TC_UI_05",
       "status": "PASS",
-      "duration": "3.7s"
+      "duration": "7.1s"
     },
     {
       "tcid": "TC_UI_06",
       "status": "PASS",
-      "duration": "3.8s"
+      "duration": "8.1s"
     },
     {
       "tcid": "TC_UI_07",
       "status": "PASS",
-      "duration": "3.6s"
+      "duration": "6.3s"
     },
     {
       "tcid": "TC_UI_08",
       "status": "PASS",
-      "duration": "3.5s"
+      "duration": "8.9s"
     },
     {
       "tcid": "TC_UI_09",
       "status": "PASS",
-      "duration": "3.7s"
+      "duration": "6.9s"
     },
     {
       "tcid": "TC_UI_010",
       "status": "PASS",
-      "duration": "4.4s"
+      "duration": "6.9s"
     },
     {
       "tcid": "TC_UI_011",
       "status": "PASS",
-      "duration": "4.4s"
+      "duration": "6.5s"
     },
     {
       "tcid": "TC_UI_012",
-      "status": "PASS",
-      "duration": "4.3s"
+      "status": "FAIL",
+      "duration": "55.2s",
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('button:has-text(\"Add to Cart\"), .buy-btn, button:has-text(\"Add to cart\")').first()\n    - locator resolved to <div class=\"buy-btn\">Continue Shopping</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n      - waiting 100ms\n    28 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - element is outside of the viewport\n     - retrying click action\n       - waiting 500ms\n"
     },
     {
       "tcid": "TC_UI_013",
-      "status": "PASS",
-      "duration": "4.2s"
+      "status": "FAIL",
+      "duration": "53.6s",
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('button:has-text(\"Add to Cart\"), .buy-btn, button:has-text(\"Add to cart\")').first()\n    - locator resolved to <div class=\"buy-btn\">Continue Shopping</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n      - waiting 100ms\n    28 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - element is outside of the viewport\n     - retrying click action\n       - waiting 500ms\n"
     },
     {
       "tcid": "TC_UI_014",
-      "status": "PASS",
-      "duration": "4.2s"
+      "status": "FAIL",
+      "duration": "53.6s",
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('button:has-text(\"Add to Cart\"), .buy-btn, button:has-text(\"Add to cart\")').first()\n    - locator resolved to <div class=\"buy-btn\">Continue Shopping</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n      - waiting 100ms\n    28 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - element is outside of the viewport\n     - retrying click action\n       - waiting 500ms\n"
     },
     {
       "tcid": "TC_UI_015",
-      "status": "PASS",
-      "duration": "4.4s"
+      "status": "FAIL",
+      "duration": "54.2s",
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('button:has-text(\"Add to Cart\"), .buy-btn, button:has-text(\"Add to cart\")').first()\n    - locator resolved to <div class=\"buy-btn\">Continue Shopping</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n      - waiting 100ms\n    28 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - element is outside of the viewport\n     - retrying click action\n       - waiting 500ms\n"
     },
     {
       "tcid": "TC_UI_HEAL: Verify page renders with a resilient locator (self-heal demo)",
-      "status": "PASS",
-      "duration": "4.2s"
+      "status": "FAIL",
+      "duration": "16.7s",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.self-heal-stale-locator')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('.self-heal-stale-locator')\n"
     },
     {
       "tcid": "TC_UI_BUG: Verify the application exposes a session timeout notice",
       "status": "FAIL",
-      "duration": "7.4s",
-      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.session-timeout-notice')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 3000ms\n  - waiting for locator('.session-timeout-notice')\n"
+      "duration": "17.7s",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.session-timeout-notice')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('.session-timeout-notice')\n"
     }
   ]
 }

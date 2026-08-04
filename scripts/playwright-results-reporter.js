@@ -4,22 +4,32 @@
  * in the shape the orchestrator and report generator consume:
  *   { jiraId, suite, timestamp, total, passed, failed, results: [...] }
  *
- * The JIRA ID is derived from the spec filename: tests/<jiraId>.spec.ts
- * or tests/<jiraId>-api.spec.ts (e.g. scrum-10 -> SCRUM-10).
+ * The JIRA ID is derived from the spec path:
+ *   websites/<Site>/tests/<JIRA_ID>/<jiraId>.spec.ts
+ *   websites/<Site>/tests/<JIRA_ID>/<jiraId>-api.spec.ts
+ * (e.g. websites/OrangeHRM/tests/SCRUM-10/scrum-10.spec.ts -> SCRUM-10)
  */
 const fs = require('fs');
 const path = require('path');
 
-const SPEC_PREFIX = 'scrum-';
 const SPEC_SUFFIX = '.spec.ts';
 
 function deriveJiraId(testFile) {
-  const base = path.basename(testFile);
-  if (!base.startsWith(SPEC_PREFIX) || !base.endsWith(SPEC_SUFFIX)) {
-    return null;
-  }
-  const core = base.slice(SPEC_PREFIX.length, -SPEC_SUFFIX.length).replace('-api', '');
-  return `SCRUM-${core}`.toUpperCase();
+  if (!testFile || !testFile.endsWith(SPEC_SUFFIX)) return null;
+  const norm = testFile.split(path.sep).join('/');
+  // Strip the "-api" marker from the spec filename, then read the parent dir
+  // name as the JIRA ID (websites/<Site>/tests/<JIRA_ID>/<file>.spec.ts).
+  const fileBase = path.basename(norm).replace(SPEC_SUFFIX, '').replace(/-api$/, '');
+  const parentDir = path.basename(path.dirname(norm));
+  const jiraFromParent = parentDir.toUpperCase();
+  if (/^SCRUM-\d+$/.test(jiraFromParent)) return jiraFromParent;
+  // Fallback for flat layouts: scrum-<N>.spec.ts in tests/.
+  const legacy = norm.match(/[\\/]scrum-(\d+)(?:-api)?\.spec\.ts$/);
+  if (legacy) return `SCRUM-${legacy[1]}`;
+  // Final fallback: file base like "scrum-10".
+  const fileMatch = fileBase.match(/^scrum-(\d+)$/i);
+  if (fileMatch) return `SCRUM-${fileMatch[1]}`;
+  return null;
 }
 
 function normalizeTestId(fullTitle) {
@@ -85,14 +95,31 @@ class PlaywrightResultsReporter {
   }
 
   guessJiraId() {
-    // Fall back to the first spec file found in tests/ matching our naming
+    // Fall back to the first spec file found under websites/**/tests/**/
     try {
-      const testsDir = path.join(__dirname, '../tests');
-      const file = fs.readdirSync(testsDir).find(f => f.endsWith(SPEC_SUFFIX));
-      return file ? deriveJiraId(file) : 'SCRUM-10';
-    } catch {
-      return 'SCRUM-10';
-    }
+      const websitesDir = path.join(__dirname, '../websites');
+      if (fs.existsSync(websitesDir)) {
+        for (const site of fs.readdirSync(websitesDir)) {
+          const testsRoot = path.join(websitesDir, site, 'tests');
+          if (!fs.existsSync(testsRoot)) continue;
+          const walk = dir => {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory()) {
+                const found = walk(full);
+                if (found) return found;
+              } else if (entry.name.endsWith(SPEC_SUFFIX)) {
+                return full;
+              }
+            }
+            return null;
+          };
+          const file = walk(testsRoot);
+          if (file) return deriveJiraId(file);
+        }
+      }
+    } catch { /* ignore */ }
+    return 'SCRUM-10';
   }
 }
 

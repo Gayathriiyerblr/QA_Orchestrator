@@ -68,7 +68,7 @@ node scripts/orchestrate.js SCRUM-10
 1. **Requirement Analysis**: Fetches the live JIRA ticket (`SCRUM-10`) via the JIRA REST API and writes `artifacts/{JIRA_ID}/requirements.json` from the ticket's summary + description (source of truth). If JIRA is unreachable, it falls back to a saved local prompt; a stale hand-written `requirements.json` is backed up to `requirements.previous.json` and never silently reused.
 2. **AI Test Generation**: Derives UI + API test cases from the requirements and writes `testcases.json` plus the `{JIRA_ID}_{Module}_UI.csv` / `{JIRA_ID}_{Module}_API.csv` sources.
 3. **JIRA Test Case Sheet**: Generates a `{JIRA_ID}_TestCases.xlsx` Excel file with all generated test cases in JIRA format (pre-execution with `Not Run` status).
-4. **Playwright Automation Code Generation**: Transforms the test cases into POM-based Playwright scripts — `tests/{jira_id}.spec.ts` (UI) and `tests/{jira_id}-api.spec.ts` (API) — plus a reusable Page Object at `artifacts/{JIRA_ID}/scripts/{Module}Page.ts`.
+4. **Playwright Automation Code Generation**: Transforms the test cases into POM-based Playwright scripts — `websites/<Site>/tests/{JIRA_ID}/{jira_id}.spec.ts` (UI) and `websites/<Site>/tests/{JIRA_ID}/{jira_id}-api.spec.ts` (API) — plus a framework-based Page Object (extends `framework/base/BasePage`) at `websites/<Site>/pages/{Module}Page.ts` and a traceability copy at `artifacts/{JIRA_ID}/scripts/{Module}Page.ts`.
 5. **Execution**: Launches a headed Chromium browser via Playwright for the UI spec and runs the API spec against the dashboard backend.
 6. **Real-time Updates**: Sends logs and pass/fail metrics to the Dashboard via WebSockets.
 7. **Self-Healing**: If a locator fails, the AI attempts to "heal" the script.
@@ -154,8 +154,8 @@ When the orchestrator runs, it automatically generates a structured Excel file (
 ## 🛠️ Troubleshooting
 
 - **Connection Error**: Ensure the backend `server.js` is running before starting the orchestrator.
-- **Playwright Timeouts**: If the application is slow, increase the `timeout` in `playwright.config.ts`.
-- **Headed Mode**: To run tests silently, modify `scripts/orchestrate.js` to change `--headed` to `--headless` in the `execSync` command.
+- **Playwright Timeouts**: If the application is slow, increase the `timeout` in `config/playwright.config.ts` (or the framework `TIMEOUTS` in `framework/constants/TestConstants.ts`).
+- **Headed Mode**: To run tests silently, modify `scripts/orchestrate.js` to change `--headed` to `--headless` in the `execSync` command, or run `npm run test` / `npm run test:orangehrm` / `npm run test:bstack` directly.
 - **Excel not generated**: Ensure the Requirement Agent ran and `testcases.json` exists in `artifacts/{JIRA_ID}/` — the Excel sheet is built from that generated manifest, not from hand-written CSVs.
 - **Stale dashboard title/source**: If the dashboard still shows the old story title or source, restart the backend (`node dashboard/backend/server.js`) — a long-running process may be running pre-change code. The backend fetches live JIRA data on each request, so a fresh process reflects the current ticket.
 

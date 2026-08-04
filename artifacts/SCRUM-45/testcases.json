@@ -1,0 +1,107 @@
+{
+  "jiraId": "SCRUM-45",
+  "module": "Edit_Existing_Leave",
+  "app": {
+    "baseUrl": null,
+    "username": null,
+    "password": null,
+    "site": "OrangeHRM",
+    "isOrangeHrm": true
+  },
+  "generatedAt": "2026-08-04T10:56:08.631Z",
+  "source": "JIRA",
+  "ui": [
+    {
+      "tcid": "TC_UI_01",
+      "scenario": "Verify Edit Existing Leave loads and is accessible",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.",
+      "expected": "The application loads successfully and is accessible.",
+      "priority": "High",
+      "severity": "Critical"
+    },
+    {
+      "tcid": "TC_UI_02",
+      "scenario": "Verify: User can navigate to the *Leave* module.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"Apply\" and select the Leave Type, From Date, and To Date.\n6. Add any comments and click \"Apply\".\n7. Verify the leave request is submitted successfully.",
+      "expected": "The leave request is submitted successfully.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_03",
+      "scenario": "Verify: User can locate an existing leave request that is eligible for modification.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"Apply\" and select the Leave Type, From Date, and To Date.\n6. Add any comments and click \"Apply\".\n7. Verify the leave request is submitted successfully.",
+      "expected": "The leave request is submitted successfully.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_04",
+      "scenario": "Verify: User can edit the leave request details (e.g., leave dates or leave type).",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"Apply\" and select the Leave Type, From Date, and To Date.\n6. Add any comments and click \"Apply\".\n7. Verify the leave request is submitted successfully.",
+      "expected": "The leave request is submitted successfully.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_05",
+      "scenario": "Verify: User can save the updated leave request successfully.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"Apply\" and select the Leave Type, From Date, and To Date.\n6. Add any comments and click \"Apply\".\n7. Verify the leave request is submitted successfully.",
+      "expected": "The leave request is submitted successfully.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_06",
+      "scenario": "Verify: A success confirmation message is displayed.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. Navigate to the relevant section of the application.\n5. Perform the action required by: \"A success confirmation message is displayed.\".\n6. Verify the expected result is displayed.",
+      "expected": "The action for \"A success confirmation message is displayed.\" completes successfully with the expected result displayed.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_07",
+      "scenario": "Verify: Updated leave details are reflected in the Leave List/History.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"Apply\" and select the Leave Type, From Date, and To Date.\n6. Add any comments and click \"Apply\".\n7. Verify the leave request is submitted successfully.",
+      "expected": "The leave request is submitted successfully.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_08",
+      "scenario": "Verify: No application errors or validation issues are encountered during the update.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. Navigate to the relevant section of the application.\n5. Perform the action required by: \"No application errors or validation issues are encountered during the update.\".\n6. Verify the expected result is displayed.",
+      "expected": "The action for \"No application errors or validation issues are encountered during the update.\" completes successfully with the expected result displayed.",
+      "priority": "Medium",
+      "severity": "Major"
+    },
+    {
+      "tcid": "TC_UI_HEAL",
+      "scenario": "Verify page renders with a resilient locator (self-heal demo)",
+      "steps": "1. Launch the application.\n2. Wait for the main content area using the page container.\n3. Verify the page is visible.",
+      "expected": "The page content is rendered and visible.",
+      "priority": "Medium",
+      "severity": "Major",
+      "healable": true
+    }
+  ],
+  "api": [
+    {
+      "tcid": "TC_API_01",
+      "endpoint": "/api/results",
+      "method": "GET",
+      "payload": "{}",
+      "expectedCode": "200",
+      "validation": "Response returns HTTP 200 and verifies the module is reachable"
+    },
+    {
+      "tcid": "TC_API_BUG",
+      "endpoint": "/api/personal-details",
+      "method": "PUT",
+      "payload": "{\"nickname\":\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}",
+      "expectedCode": "400",
+      "validation": "Server rejects nicknames longer than 30 characters (known bug: backend accepts them)",
+      "knownBug": true
+    }
+  ]
+}

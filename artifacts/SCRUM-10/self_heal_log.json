@@ -1,9 +1,9 @@
 [
   {
-    "timestamp": "2026-08-03T19:48:02.526Z",
+    "timestamp": "2026-08-04T07:02:43.812Z",
     "jiraId": "SCRUM-10",
     "tcid": "TC_UI_HEAL: Verify page renders with a resilient locator (self-heal demo)",
-    "issue": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.self-heal-stale-locator')\nExpected: visible\nTimeout: 2000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout",
+    "issue": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.self-heal-stale-locator')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeou",
     "action": "self_heal",
     "strategy": "Nearest Match + Semantic Analysis",
     "originalLocator": ".self-heal-stale-locator",

@@ -1,0 +1,75 @@
+{
+  "jiraId": "SCRUM-45",
+  "suite": "Regression",
+  "timestamp": "2026-08-04T11:09:04.040Z",
+  "total": 11,
+  "passed": 1,
+  "failed": 10,
+  "results": [
+    {
+      "tcid": "TC_API_01",
+      "status": "PASS",
+      "duration": "1.4s"
+    },
+    {
+      "tcid": "TC_API_BUG: PUT /api/personal-details",
+      "status": "FAIL",
+      "duration": "0.1s",
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 200"
+    },
+    {
+      "tcid": "TC_UI_01",
+      "status": "FAIL",
+      "duration": "120.2s",
+      "error": "Test timeout of 120000ms exceeded."
+    },
+    {
+      "tcid": "TC_UI_02",
+      "status": "FAIL",
+      "duration": "120.1s",
+      "error": "Test timeout of 120000ms exceeded."
+    },
+    {
+      "tcid": "TC_UI_03",
+      "status": "FAIL",
+      "duration": "120.0s",
+      "error": "Test timeout of 120000ms exceeded."
+    },
+    {
+      "tcid": "TC_UI_04",
+      "status": "FAIL",
+      "duration": "120.1s",
+      "error": "Test timeout of 120000ms exceeded."
+    },
+    {
+      "tcid": "TC_UI_05",
+      "status": "FAIL",
+      "duration": "120.2s",
+      "error": "Test timeout of 120000ms exceeded."
+    },
+    {
+      "tcid": "TC_UI_06",
+      "status": "FAIL",
+      "duration": "20.0s",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.oxd-topbar-header-title')\nExpected: visible\nReceived: undefined\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('.oxd-topbar-header-title')\n"
+    },
+    {
+      "tcid": "TC_UI_07",
+      "status": "FAIL",
+      "duration": "120.1s",
+      "error": "Test timeout of 120000ms exceeded."
+    },
+    {
+      "tcid": "TC_UI_08",
+      "status": "FAIL",
+      "duration": "9.2s",
+      "error": "Error: locator.fill: Target page, context or browser has been closed"
+    },
+    {
+      "tcid": "TC_UI_HEAL: Verify page renders with a resilient locator (self-heal demo)",
+      "status": "FAIL",
+      "duration": "6.0s",
+      "error": "Assertion failed during test execution."
+    }
+  ]
+}

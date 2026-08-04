@@ -8,9 +8,46 @@ const { parseCSV, buildSteps, buildTestCaseWorkbook } = require('./testCaseUtils
 const { logBug, postTestResultsToJira } = require('./jiraClient');
 const { generateRequirements } = require('./generate_requirements');
 const { generateTestCasesFromRequirements } = require('./generate_testcases_from_requirements');
-const { generatePlaywrightScripts } = require('./generate_playwright_scripts');
+const { generatePlaywrightScripts, resolveSite } = require('./generate_playwright_scripts');
 
 const socket = io('http://localhost:5000');
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Spec resolution — specs now live under websites/<Site>/tests/<JIRA_ID>/.
+// Find the site folder for a JIRA ID (reads testcases.json when available).
+// ─────────────────────────────────────────────────────────────────────────────
+function findSiteForJira(jiraId) {
+  const testcasesPath = path.join(__dirname, `../artifacts/${jiraId}/testcases.json`);
+  if (fs.existsSync(testcasesPath)) {
+    try {
+      const app = JSON.parse(fs.readFileSync(testcasesPath, 'utf8')).app || {};
+      const site = resolveSite(app);
+      if (site) return site;
+    } catch { /* fall through to scan */ }
+  }
+  // Fallback: scan websites/<Site>/tests/<JIRA_ID>/ for the spec.
+  const websitesDir = path.join(__dirname, '../websites');
+  if (fs.existsSync(websitesDir)) {
+    for (const site of fs.readdirSync(websitesDir)) {
+      const specDir = path.join(websitesDir, site, 'tests', jiraId.toUpperCase());
+      if (fs.existsSync(specDir)) return site;
+    }
+  }
+  return null;
+}
+
+/** Resolve the spec paths for a JIRA ticket, or [] when not found. */
+function resolveSpecsForJira(jiraId) {
+  const site = findSiteForJira(jiraId);
+  if (!site) return [];
+  const testDir = path.join(__dirname, `../websites/${site}/tests/${jiraId.toUpperCase()}`);
+  const specs = [];
+  const ui = path.join(testDir, `${jiraId.toLowerCase()}.spec.ts`);
+  const api = path.join(testDir, `${jiraId.toLowerCase()}-api.spec.ts`);
+  if (fs.existsSync(ui)) specs.push(path.relative(path.join(__dirname, '..'), ui).split(path.sep).join('/'));
+  if (fs.existsSync(api)) specs.push(path.relative(path.join(__dirname, '..'), api).split(path.sep).join('/'));
+  return specs;
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Shared helper: write an Excel workbook even when the target file is locked
@@ -273,18 +310,9 @@ async function orchestrate(jiraId) {
       console.log(`[ORCHESTRATOR] Launching real browser for ${jiraId}...`);
       
       // Execute real playwright tests in headed mode.
-      // UI spec: tests/<jiraId>.spec.ts
-      // API spec: tests/<jiraId>-api.spec.ts (runs against the backend, no browser)
-      const uiTestFile = `tests/${jiraId.toLowerCase()}.spec.ts`;
-      const apiTestFile = `tests/${jiraId.toLowerCase()}-api.spec.ts`;
-      const specsToRun = [];
-
-      if (fs.existsSync(path.join(__dirname, `../${uiTestFile}`))) {
-        specsToRun.push(uiTestFile);
-      }
-      if (fs.existsSync(path.join(__dirname, `../${apiTestFile}`))) {
-        specsToRun.push(apiTestFile);
-      }
+      // UI spec: websites/<Site>/tests/<JIRA_ID>/<jiraId>.spec.ts
+      // API spec: websites/<Site>/tests/<JIRA_ID>/<jiraId>-api.spec.ts
+      const specsToRun = resolveSpecsForJira(jiraId);
 
       if (specsToRun.length > 0) {
         // Run from the ROOT directory so Playwright finds the config and tests
@@ -361,8 +389,14 @@ async function orchestrate(jiraId) {
           try {
             const healed = await selfHealer.heal(jiraId, tc.tcid, '.self-heal-stale-locator', tc.error || 'Locator timeout');
             console.log(`[SELF-HEAL] ${tc.tcid} healed to: ${healed.newLocator}`);
-            // Patch the spec so the re-run actually uses the healed locator.
-            selfHealer.patchSpec(jiraId, '.self-heal-stale-locator', healed.newLocator);
+            // Patch the site's locators file so the re-run uses the healed locator.
+            const site = findSiteForJira(jiraId);
+            if (site) {
+              // The healable locator lives in DemoLocators.locators.ts.
+              selfHealer.patchLocators(jiraId, site, 'DemoLocators', '.self-heal-stale-locator', healed.newLocator);
+            } else {
+              selfHealer.patchSpec(jiraId, '.self-heal-stale-locator', healed.newLocator);
+            }
           } catch (healError) {
             console.error(`[SELF-HEAL] Healing ${tc.tcid} failed:`, healError.message);
           }
@@ -371,11 +405,7 @@ async function orchestrate(jiraId) {
 
         // Re-run the spec so healed tests pass and only true failures remain.
         try {
-          const uiTestFile = `tests/${jiraId.toLowerCase()}.spec.ts`;
-          const apiTestFile = `tests/${jiraId.toLowerCase()}-api.spec.ts`;
-          const specsToRun = [];
-          if (fs.existsSync(path.join(__dirname, `../${uiTestFile}`))) specsToRun.push(uiTestFile);
-          if (fs.existsSync(path.join(__dirname, `../${apiTestFile}`))) specsToRun.push(apiTestFile);
+          const specsToRun = resolveSpecsForJira(jiraId);
           if (specsToRun.length > 0) {
             execSync(`npx playwright test ${specsToRun.join(' ')}`, { stdio: 'inherit', cwd: path.join(__dirname, '..') });
           }

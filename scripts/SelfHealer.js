@@ -68,24 +68,70 @@ class SelfHealer {
   }
 
   /**
-   * Patch the generated spec file for a ticket: replace the stale locator with
-   * the healed one so the re-run passes. This is the "automation script patch"
-   * step of the self-healing loop.
+   * Patch the site's locators file for a ticket: replace the stale locator with
+   * the healed one so the re-run passes. Locators are plain string constants in
+   * websites/<Site>/locators/*.locators.ts, so a safe string replacement works
+   * and heals survive spec regeneration.
+   *
+   * @param {string} jiraId        e.g. 'SCRUM-10'
+   * @param {string} site          website folder, e.g. 'OrangeHRM'
+   * @param {string} pageClass     page object class name, e.g. 'LoginPage'
+   * @param {string} oldLocator    the stale locator string
+   * @param {string} newLocator    the healed locator string
+   * @returns {boolean}            true when a locators file was patched
    */
-  patchSpec(jiraId, oldLocator, newLocator) {
+  patchLocators(jiraId, site, pageClass, oldLocator, newLocator) {
     try {
-      const specPath = path.join(__dirname, `../tests/${jiraId.toLowerCase()}.spec.ts`);
-      if (!fs.existsSync(specPath)) return false;
-      let code = fs.readFileSync(specPath, 'utf8');
-      if (!code.includes(oldLocator)) return false;
+      const locatorsDir = path.join(__dirname, `../websites/${site}/locators`);
+      const baseName = pageClass.replace(/Page$/, '') || 'Page';
+      let locatorsPath = path.join(locatorsDir, `${baseName}.locators.ts`);
+      if (!fs.existsSync(locatorsPath)) {
+        // Fallback: patch any locators file under the site that contains it.
+        const matches = fs.readdirSync(locatorsDir).filter(f => f.endsWith('.locators.ts'));
+        const hit = matches.map(f => path.join(locatorsDir, f)).find(f => fs.readFileSync(f, 'utf8').includes(oldLocator));
+        if (!hit) {
+          console.warn(`[AI HEAL] No locators file contains "${oldLocator}" for ${jiraId}`);
+          return false;
+        }
+        locatorsPath = hit;
+      }
+      let code = fs.readFileSync(locatorsPath, 'utf8');
+      if (!code.includes(oldLocator)) {
+        console.warn(`[AI HEAL] Locator "${oldLocator}" not found in ${locatorsPath}`);
+        return false;
+      }
       code = code.split(oldLocator).join(newLocator);
-      fs.writeFileSync(specPath, code, 'utf8');
-      console.log(`[AI HEAL] Patched ${specPath}: "${oldLocator}" -> "${newLocator}"`);
+      fs.writeFileSync(locatorsPath, code, 'utf8');
+      console.log(`[AI HEAL] Patched ${locatorsPath}: "${oldLocator}" -> "${newLocator}"`);
       return true;
     } catch (err) {
-      console.warn('[AI HEAL] Could not patch spec:', err.message);
+      console.warn('[AI HEAL] Could not patch locators:', err.message);
       return false;
     }
+  }
+
+  /** Backwards-compatible alias used by older orchestration paths. */
+  patchSpec(jiraId, oldLocator, newLocator) {
+    // Locate the site containing the stale locator in a locators file.
+    const websitesDir = path.join(__dirname, '../websites');
+    try {
+      if (!fs.existsSync(websitesDir)) return false;
+      for (const site of fs.readdirSync(websitesDir)) {
+        const locatorsDir = path.join(websitesDir, site, 'locators');
+        if (!fs.existsSync(locatorsDir)) continue;
+        const matches = fs.readdirSync(locatorsDir).filter(f => f.endsWith('.locators.ts'));
+        const hit = matches
+          .map(f => path.join(locatorsDir, f))
+          .find(f => fs.readFileSync(f, 'utf8').includes(oldLocator));
+        if (hit) {
+          const pageClass = path.basename(hit, '.locators.ts');
+          return this.patchLocators(jiraId, site, `${pageClass}Page`, oldLocator, newLocator);
+        }
+      }
+    } catch (err) {
+      console.warn('[AI HEAL] Could not locate site for spec patch:', err.message);
+    }
+    return false;
   }
 
   /**

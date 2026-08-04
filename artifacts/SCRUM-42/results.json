@@ -1,0 +1,61 @@
+{
+  "jiraId": "SCRUM-42",
+  "suite": "Regression",
+  "timestamp": "2026-08-04T09:22:36.915Z",
+  "total": 10,
+  "passed": 9,
+  "failed": 1,
+  "results": [
+    {
+      "tcid": "TC_UI_01",
+      "status": "PASS",
+      "duration": "8.4s"
+    },
+    {
+      "tcid": "TC_UI_02",
+      "status": "PASS",
+      "duration": "10.2s"
+    },
+    {
+      "tcid": "TC_UI_03",
+      "status": "PASS",
+      "duration": "10.8s"
+    },
+    {
+      "tcid": "TC_UI_04",
+      "status": "PASS",
+      "duration": "8.6s"
+    },
+    {
+      "tcid": "TC_UI_05",
+      "status": "PASS",
+      "duration": "9.5s"
+    },
+    {
+      "tcid": "TC_UI_06",
+      "status": "PASS",
+      "duration": "11.0s"
+    },
+    {
+      "tcid": "TC_UI_07",
+      "status": "PASS",
+      "duration": "10.2s"
+    },
+    {
+      "tcid": "TC_UI_08",
+      "status": "PASS",
+      "duration": "9.3s"
+    },
+    {
+      "tcid": "TC_UI_HEAL: Verify page renders with a resilient locator (self-heal demo)",
+      "status": "PASS",
+      "duration": "9.2s"
+    },
+    {
+      "tcid": "TC_UI_BUG: Verify the application exposes a session timeout notice",
+      "status": "FAIL",
+      "duration": "24.7s",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.session-timeout-notice')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('.session-timeout-notice')\n"
+    }
+  ]
+}

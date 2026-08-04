@@ -53,6 +53,42 @@ function cleanCredential(raw) {
     .trim();
 }
 
+/**
+ * Detect the target website from a JIRA ticket's description/title/base URL.
+ * Uses both explicit identifiers (URLs, "OrangeHRM", "BrowserStack") and
+ * domain keywords, so a ticket like "Edit Employee Personal Details (PIM
+ * Module)" is correctly classified as OrangeHRM even without the literal name.
+ * Returns 'OrangeHRM' | 'BrowserStackDemo' | null.
+ */
+function detectSite(requirements) {
+  const text = `${requirements.title || ''} ${requirements.description || ''} ${extractBaseUrl(requirements) || ''}`;
+  const s = text.toLowerCase();
+
+  // Explicit URL / name matches win first.
+  if (/orangehrm|opensource-demo/.test(s)) return 'OrangeHRM';
+  if (/bstackdemo|browserstack/.test(s)) return 'BrowserStackDemo';
+
+  // OrangeHRM domain keywords (its module vocabulary).
+  const orangeKeywords = [
+    'pim module', 'pim', 'my info', 'personal detail', 'employee record',
+    'admin module', 'leave module', 'recruitment', 'timesheet', 'performance',
+    'add employee', 'edit employee', 'employee list', 'attendance', 'dashboard module',
+    'claim module', 'directory', 'maintenance', 'buzz', 'overtime', 'candidate',
+    'vacanc', 'shift', 'pay grade', 'job title', 'employment status',
+    'orangehrm', 'opensource-demo',
+  ];
+  if (orangeKeywords.some(k => s.includes(k))) return 'OrangeHRM';
+
+  // BrowserStack / e-commerce domain keywords.
+  const ecomKeywords = [
+    'product', 'cart', 'checkout', 'bag', 'order', 'search product',
+    'brand filter', 'add to cart', 'sign in page', 'bstackdemo', 'browserstack',
+  ];
+  if (ecomKeywords.some(k => s.includes(k))) return 'BrowserStackDemo';
+
+  return null;
+}
+
 /** Extract username/password from the JIRA description (demo credentials). */
 function extractCredentials(requirements) {
   const desc = requirements.description || '';
@@ -259,7 +295,8 @@ function generateTestCases(requirements) {
   const baseUrl = extractBaseUrl(requirements);
   const { username, password } = extractCredentials(requirements);
   const appName = (requirements.analysis && requirements.analysis.module) || 'the application';
-  const isOrangeHrm = /orangehrm|opensource-demo/i.test(`${requirements.description || ''} ${baseUrl || ''}`);
+  const site = detectSite(requirements);
+  const isOrangeHrm = site === 'OrangeHRM';
 
   // Login steps — derived from the ticket, not hardcoded.
   const launchStep = baseUrl
@@ -449,7 +486,8 @@ async function generateTestCasesFromRequirements(jiraId) {
     baseUrl: extractBaseUrl(requirements),
     username: extractCredentials(requirements).username,
     password: extractCredentials(requirements).password,
-    isOrangeHrm: /orangehrm|opensource-demo/i.test(`${requirements.description || ''} ${extractBaseUrl(requirements) || ''}`),
+    site: detectSite(requirements),
+    isOrangeHrm: detectSite(requirements) === 'OrangeHRM',
   };
   const testcases = {
     jiraId,
@@ -470,4 +508,4 @@ async function generateTestCasesFromRequirements(jiraId) {
   return { uiCsvPath, apiCsvPath, testcasesPath, uiCases, apiCases, testcases };
 }
 
-module.exports = { generateTestCasesFromRequirements, generateTestCases, toCSV, apiEndpointForModule, guessModule, extractBaseUrl, extractCredentials };
+module.exports = { generateTestCasesFromRequirements, generateTestCases, toCSV, apiEndpointForModule, guessModule, extractBaseUrl, extractCredentials, detectSite };

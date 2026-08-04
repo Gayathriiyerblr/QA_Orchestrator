@@ -1,0 +1,3 @@
+TCID,Endpoint,Method,Payload,Expected Code,Validation
+TC_API_01,/api/results,GET,{},200,Response returns HTTP 200 and verifies the module is reachable
+TC_API_BUG,/api/personal-details,PUT,"{""nickname"":""XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""}",400,Server rejects nicknames longer than 30 characters (known bug: backend accepts them)

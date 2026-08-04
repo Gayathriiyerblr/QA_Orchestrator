@@ -1,51 +1,9 @@
 {
   "jiraId": "SCRUM-10",
   "suite": "Regression",
-  "timestamp": "2026-08-03T19:48:51.638Z",
-  "total": 8,
-  "passed": 7,
-  "failed": 1,
-  "results": [
-    {
-      "tcid": "TC_API_01",
-      "status": "PASS",
-      "duration": "1.0s"
-    },
-    {
-      "tcid": "TC_API_BUG: PUT /api/personal-details",
-      "status": "FAIL",
-      "duration": "0.0s",
-      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 200"
-    },
-    {
-      "tcid": "TC_UI_01",
-      "status": "PASS",
-      "duration": "9.6s"
-    },
-    {
-      "tcid": "TC_UI_02",
-      "status": "PASS",
-      "duration": "5.7s"
-    },
-    {
-      "tcid": "TC_UI_03",
-      "status": "PASS",
-      "duration": "7.4s"
-    },
-    {
-      "tcid": "TC_UI_04",
-      "status": "PASS",
-      "duration": "5.8s"
-    },
-    {
-      "tcid": "TC_UI_05",
-      "status": "PASS",
-      "duration": "8.7s"
-    },
-    {
-      "tcid": "TC_UI_HEAL: Verify page renders with a resilient locator (self-heal demo)",
-      "status": "PASS",
-      "duration": "7.8s"
-    }
-  ]
+  "timestamp": "2026-08-04T11:10:35.084Z",
+  "total": 0,
+  "passed": 0,
+  "failed": 0,
+  "results": []
 }

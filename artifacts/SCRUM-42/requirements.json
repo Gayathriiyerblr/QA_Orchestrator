@@ -1,0 +1,51 @@
+{
+  "jiraId": "SCRUM-42",
+  "title": "Edit Employee Personal Details (PIM Module)",
+  "description": "h2. *Scenario 1: Edit Employee Personal Details (PIM Module)*\n\nh3. *Description*\n\nNavigate to an existing employee record and update one or more personal details (e.g., nickname, marital status, nationality, or other editable fields).\n\nh3. *Acceptance Criteria*\n\n* User can navigate to the *PIM* module.\n* User can search for and open an existing employee record.\n* User can edit one or more editable employee details.\n* User can save the updated information successfully.\n* A success confirmation message is displayed.\n* Updated details persist after refreshing the page or reopening the employee record.\n* No validation or application errors are displayed during the update.",
+  "acceptanceCriteria": [
+    "* User can navigate to the *PIM* module.",
+    "* User can search for and open an existing employee record.",
+    "* User can edit one or more editable employee details.",
+    "* User can save the updated information successfully.",
+    "* A success confirmation message is displayed.",
+    "* Updated details persist after refreshing the page or reopening the employee record.",
+    "* No validation or application errors are displayed during the update."
+  ],
+  "source": "JIRA",
+  "jira": {
+    "issuetype": "Story",
+    "status": "To Do",
+    "priority": "Medium",
+    "labels": [],
+    "components": [],
+    "url": "https://gayathriiyerbloreiihr.atlassian.net/browse/SCRUM-42"
+  },
+  "analysis": {
+    "module": "Edit Employee Personal",
+    "complexity": "Medium",
+    "dependencies": []
+  },
+  "bugs": [
+    {
+      "bugId": "SCRUM-43",
+      "tcid": "TC_UI_BUG: Verify the application exposes a session timeout notice",
+      "title": "[BUG] Test Case TC_UI_BUG failed",
+      "description": "Test case TC_UI_BUG: Verify the application exposes a session timeout notice failed during automated execution.\nError: Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.session-timeout-notice')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for locator('.session-timeout-notice')\n",
+      "severity": "High",
+      "status": "Open",
+      "jiraUrl": "https://gayathriiyerbloreiihr.atlassian.net/browse/SCRUM-43",
+      "loggedToJira": true
+    },
+    {
+      "bugId": "SCRUM-44",
+      "tcid": "TC_UI_MILITARY",
+      "title": "[BUG] Military Service field is completely missing from the Personal Details form",
+      "description": "The user story requirements specify updating the Military Service field, but this field is not present on the Personal Details page in the OrangeHRM system.",
+      "severity": "Medium",
+      "status": "Open",
+      "jiraUrl": "https://gayathriiyerbloreiihr.atlassian.net/browse/SCRUM-44",
+      "loggedToJira": true
+    }
+  ],
+  "generatedAt": "2026-08-04T09:20:36.277Z"
+}

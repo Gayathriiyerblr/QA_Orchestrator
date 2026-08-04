@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "playwright test --config=config/playwright.config.ts",
+    "test:headed": "playwright test --config=config/playwright.config.ts --headed",
+    "test:orangehrm": "playwright test websites/OrangeHRM --config=config/playwright.config.ts",
+    "test:bstack": "playwright test websites/BrowserStackDemo --config=config/playwright.config.ts",
+    "test:report": "playwright show-report",
+    "gen": "node scripts/generate_playwright_scripts.js",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",

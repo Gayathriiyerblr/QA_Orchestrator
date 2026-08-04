@@ -1,23 +1,17 @@
-import { defineConfig, devices } from '@playwright/test';
+/**
+ * Root playwright.config.ts — delegates to the enterprise config under config/.
+ * Keeping this file at the repo root means `npx playwright test <specs>`
+ * (as invoked by scripts/orchestrate.js) and `npm test` both use the
+ * enterprise testDir (websites/), projects, and reporters.
+ *
+ * Note: reporter paths are resolved relative to this root config, so we use the
+ * root-relative reporter list (./scripts/...) instead of the config/ one.
+ */
+import { defineConfig } from '@playwright/test';
+import config from './config/playwright.config';
+import { rootReporters } from './framework/reports/index';
 
 export default defineConfig({
-  testDir: './tests',
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: 0,
-  workers: 1,
-  reporter: [
-    ['html', { open: 'never' }],
-    ['./scripts/playwright-results-reporter.js'],
-  ],
-  use: {
-    trace: 'on-first-retry',
-    viewport: { width: 1280, height: 720 },
-  },
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-  ],
+  ...config,
+  reporter: rootReporters,
 });
