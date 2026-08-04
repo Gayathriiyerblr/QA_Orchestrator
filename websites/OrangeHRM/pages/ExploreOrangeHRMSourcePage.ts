@@ -7,6 +7,7 @@ import { BasePage } from '../../../framework/base/BasePage';
 import { DashboardPage } from './DashboardPage';
 import { LeavePage } from './LeavePage';
 import { LoginPage } from './LoginPage';
+import { PersonalDetailsPage } from './PersonalDetailsPage';
 import { PIMPage } from './PIMPage';
 import { RecruitmentPage } from './RecruitmentPage';
 import { TimePage } from './TimePage';
@@ -15,6 +16,7 @@ export class ExploreOrangeHRMSourcePage extends BasePage {
   readonly dashboardPage: DashboardPage;
   readonly leavePage: LeavePage;
   readonly loginPage: LoginPage;
+  readonly personalDetailsPage: PersonalDetailsPage;
   readonly pimPage: PIMPage;
   readonly recruitmentPage: RecruitmentPage;
   readonly timePage: TimePage;
@@ -24,6 +26,7 @@ export class ExploreOrangeHRMSourcePage extends BasePage {
     this.dashboardPage = new DashboardPage(page);
     this.leavePage = new LeavePage(page);
     this.loginPage = new LoginPage(page);
+    this.personalDetailsPage = new PersonalDetailsPage(page);
     this.pimPage = new PIMPage(page);
     this.recruitmentPage = new RecruitmentPage(page);
     this.timePage = new TimePage(page);

@@ -227,13 +227,21 @@ function buildAggregatePage({ pageClass, site }) {
   const pageFiles = fs
     .readdirSync(path.join(__dirname, `../websites/${site}/pages`))
     .filter(f => f.endsWith('.ts'))
-    .map(f => f.replace(/\.ts$/, ''));
-  // Ensure the aggregate page itself isn't re-imported.
-  for (const pageName of pageFiles) {
-    if (pageName === pageClass) continue;
-    imports.push(`import { ${pageName} } from './${pageName}';`);
-    props.push(`  readonly ${lcFirst(pageName)}: ${pageName};`);
-  }
+    .map(f => f.replace(/\.ts$/, ''))
+    // Only re-export LEAF page objects. Aggregate pages (generated earlier for
+    // other JIRA tickets) construct every page in the folder, so including them
+    // creates infinite recursion (A builds B, B builds A, ...).
+    .filter(pageName => {
+      if (pageName === pageClass) return false;
+      const src = fs.readFileSync(path.join(__dirname, `../websites/${site}/pages/${pageName}.ts`), 'utf8');
+      return !src.includes('aggregate Page Object Model');
+    });
+
+    // Emit an import + readonly prop per leaf page.
+    for (const pageName of pageFiles) {
+      imports.push(`import { ${pageName} } from './${pageName}';`);
+      props.push(`  readonly ${lcFirst(pageName)}: ${pageName};`);
+    }
 
   return [
     `/**`,
