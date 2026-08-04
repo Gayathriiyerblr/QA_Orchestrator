@@ -7,6 +7,10 @@ import './App.css';
 
 const socket = io('http://localhost:5000');
 
+// Read an optional ?ticket=SCRUM-X from the URL so `npm run dev` can open the
+// dashboard pre-focused on the ticket that is being orchestrated.
+const urlTicket = new URLSearchParams(window.location.search).get('ticket');
+
 interface TestCase {
   tcid: string;
   status: string;
@@ -27,6 +31,7 @@ interface Bug {
 interface TestInsight {
   rootCause?: string;
   suggestion?: string;
+  summary?: string;
 }
 
 interface TicketInsights {
@@ -81,8 +86,10 @@ const App: React.FC = () => {
       const list = dataJson.tickets || [];
       setTickets(list);
       if (list.length > 0) {
-        // Prefer SCRUM-10, else the most recent ticket
-        const preferred = list.find((t: TicketData) => t.jiraId === 'SCRUM-10') || list[0];
+        // Prefer the URL ticket, else the most recently updated ticket.
+        const preferred =
+          (urlTicket && list.find((t: TicketData) => t.jiraId.toUpperCase() === urlTicket.toUpperCase())) ||
+          list[0];
         setSelected(prev => prev || preferred.jiraId);
         const agg = list.reduce((acc: { totalTests: number; passed: number; failed: number; healed: number }, t: TicketData) => ({
           totalTests: acc.totalTests + (t.total || 0),
@@ -102,7 +109,10 @@ const App: React.FC = () => {
   useEffect(() => {
     loadResults();
     socket.on('status_changed', (message: any) => {
-      if (message.type === 'DATA_UPDATE') {
+      if (message.type === 'RUN_STARTED' && message.jiraId) {
+        // A ticket just started orchestrating — focus the dashboard on it.
+        setSelected(message.jiraId);
+      } else if (message.type === 'DATA_UPDATE') {
         setData(prev => ({
           ...prev,
           ...message.data,

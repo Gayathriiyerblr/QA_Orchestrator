@@ -17,6 +17,12 @@ const dashboardApp = path.join(root, 'dashboard', 'dashboard-app');
 const BACKEND_PORT = 5000;
 const DASHBOARD_PORT = 5173;
 
+// Optional ticket to focus the dashboard on: `npm run dev -- SCRUM-10`.
+const ticketArg = process.argv[2] || null;
+const dashboardUrl = ticketArg
+  ? `http://localhost:${DASHBOARD_PORT}?ticket=${encodeURIComponent(ticketArg)}`
+  : `http://localhost:${DASHBOARD_PORT}`;
+
 const children = [];
 
 function isPortOpen(port) {
@@ -99,12 +105,12 @@ async function main() {
   const dashboardUp = await isPortOpen(DASHBOARD_PORT);
   if (dashboardUp) {
     console.log(`[dev] Dashboard already running on http://localhost:${DASHBOARD_PORT} — reusing it.`);
-    openBrowser(`http://localhost:${DASHBOARD_PORT}`);
+    openBrowser(dashboardUrl);
     return;
   }
   start('dashboard', 'npm', ['run', 'dev'], dashboardApp);
   const up = await waitForPort(DASHBOARD_PORT, 'dashboard');
-  if (up) openBrowser(`http://localhost:${DASHBOARD_PORT}`);
+  if (up) openBrowser(dashboardUrl);
 }
 
 function shutdown() {

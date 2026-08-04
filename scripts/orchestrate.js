@@ -262,6 +262,8 @@ async function updateExcelTestCasesWithResults(jiraId, results) {
 
 async function orchestrate(jiraId) {
   console.log(`[ORCHESTRATOR] Starting workflow for ${jiraId}`);
+  // Tell the dashboard which ticket is running so it can focus on it.
+  socket.emit('update_status', { type: 'RUN_STARTED', jiraId });
   socket.emit('update_status', { type: 'STATUS_UPDATE', status: 'Jira Agent: Fetching Ticket...' });
 
   // 1. Requirement Agent Work (Phase 1)
