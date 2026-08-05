@@ -41,7 +41,27 @@ Before running the workflow, ensure you have the following installed on your sys
 
 The system is designed to be orchestrated via a real-time dashboard. Follow these steps in order:
 
-### Step 1: Start the Dashboard Backend
+### Option A: One-Command Launcher (Recommended)
+The easiest way to start everything at once:
+```bash
+# From the project root directory
+npm run dev
+```
+This automatically starts:
+- Backend server on `http://localhost:5000`
+- React dashboard on `http://localhost:5173`
+- Opens your browser to the dashboard
+
+To focus on a specific JIRA ticket:
+```bash
+npm run dev -- SCRUM-45
+```
+
+### Option B: Manual Start (Step by Step)
+
+If you prefer to run components separately:
+
+**Step 1: Start the Dashboard Backend**
 The backend handles WebSocket communication between the orchestrator and the frontend.
 ```bash
 # From the root directory
@@ -49,7 +69,7 @@ node dashboard/backend/server.js
 ```
 *The server will start on `http://localhost:5000`.*
 
-### Step 2: Start the Dashboard Frontend
+**Step 2: Start the Dashboard Frontend**
 Open a new terminal and launch the React dashboard:
 ```bash
 cd dashboard/dashboard-app
@@ -57,7 +77,7 @@ npm run dev
 ```
 *Open your browser to the URL provided (usually `http://localhost:5173`).*
 
-### Step 3: Trigger the Orchestrator
+**Step 3: Trigger the Orchestrator**
 Open a third terminal, **ensure you are in the project root directory**, and run the orchestrator for a specific Jira ticket (e.g., `SCRUM-10`):
 ```bash
 # From the project root directory

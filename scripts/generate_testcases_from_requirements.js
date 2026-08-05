@@ -126,12 +126,35 @@ function buildDetailedSteps(scenario, { loginSteps, isOrangeHrm, appName }) {
         `${next + 3}. Click "Save" to create the employee record.`,
         `${next + 4}. Verify the employee is created and the success message is displayed.`
       );
-    } else if (/\bleave\b/.test(s)) {
+    } else if (/edit.*leave|leave.*edit|modify.*leave|leave.*modify|update.*leave|leave.*update/i.test(s)) {
+      // EDIT EXISTING LEAVE - specific to editing existing leave requests
+      actionSteps.push(
+        `${next}. From the top menu bar, click "Leave".`,
+        `${next + 1}. Click "My Leave" to view the leave list/calendar.`,
+        `${next + 2}. Locate an existing leave request from the list that is eligible for modification (Pending or Cancelled status).`,
+        `${next + 3}. Click the "Edit" icon or action for the existing leave request.`,
+        `${next + 4}. Modify the leave details (e.g., change dates, leave type, or add comments).`,
+        `${next + 5}. Click "Save" or "Update" to apply the changes.`,
+        `${next + 6}. Verify the updated leave details are reflected in the leave list.`
+      );
+    } else if (/\bleave\b/.test(s) && !/navigate/i.test(s)) {
       actionSteps.push(
         `${next}. From the top menu bar, click "Leave".`,
         `${next + 1}. Click "Apply" and select the Leave Type, From Date, and To Date.`,
         `${next + 2}. Add any comments and click "Apply".`,
         `${next + 3}. Verify the leave request is submitted successfully.`
+      );
+    } else if (/navigate.*leave|leave.*navigate|my leave\b/i.test(s)) {
+      // NAVIGATE TO LEAVE MODULE - just verify navigation, no apply
+      actionSteps.push(
+        `${next}. From the top menu bar, click "Leave".`,
+        `${next + 1}. Verify the Leave module loads and displays the Leave List or My Leave view.`,
+        `${next + 2}. Verify the page shows leave options like "Apply", "My Leave", or "Entitlements".`
+      );
+    } else if (/\bleave\b/.test(s)) {
+      actionSteps.push(
+        `${next}. From the top menu bar, click "Leave".`,
+        `${next + 1}. Verify the Leave module loads successfully.`
       );
     } else if (/\brecruitment\b/.test(s)) {
       actionSteps.push(
@@ -273,9 +296,12 @@ function expectedForScenario(scenario) {
     [/\badded product appears in the shopping cart\b/, 'The added product is visible in the shopping cart.'],
     [/\bproduct price and quantity are displayed correctly\b/, 'The cart shows the correct price and quantity.'],
     [/\bpim\b/, 'The employee record is created successfully in the PIM module.'],
+    [/edit.*leave|leave.*edit|modify.*leave|leave.*modify/i, 'The existing leave request is updated successfully.'],
     [/\bleave\b/, 'The leave request is submitted successfully.'],
     [/\brecruitment\b/, 'The recruitment vacancies/candidates are displayed.'],
     [/\btime\b/, 'The employee timesheet is displayed with recorded hours.'],
+    [/success.*confirmation|confirmation.*message/i, 'A success confirmation message is displayed.'],
+    [/reflected.*(leave|list|history)|leave.*list.*history/i, 'The updated leave details are reflected in the Leave List/History.'],
   ];
   const hit = table.find(([re]) => re.test(s));
   return hit ? hit[1] : `The action for "${scenario}" completes successfully with the expected result displayed.`;

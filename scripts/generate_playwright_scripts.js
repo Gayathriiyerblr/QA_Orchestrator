@@ -68,14 +68,16 @@ function scenarioActions(scenario, isOrangeHrm) {
   const s = String(scenario || '').toLowerCase();
 
   if (isOrangeHrm) {
-    // Personal Details / My Info edit flow — covers all the sub-scenarios of
+// Personal Details / My Info edit flow — covers all the sub-scenarios of
     // an "edit employee personal details" ticket (search/open, edit, save,
     // success message, persistence, no errors).
-    if (/\bpersonal detail|my info|edit employee|edit personal|edit.*detail\b|search for and open|save the updated|success confirmation|persist after|no validation|no.*application error|updated detail/.test(s)) {
+    // Only matches if it's explicitly about personal details, NOT generic "success message" or "validation"
+    if (/\bpersonal detail|my info|edit employee|edit personal|edit.*detail\b|search for and open|persist after|updated detail/.test(s) ||
+        /\b(effective date|birth|ssn|license|marital|nickname|other id)/i.test(s)) {
       return [
         ['LoginPage', 'login()'],
         // editPersonalDetails() generates a unique nickname + picks marital
-        // status each run, then saves and verifies persistence.
+        // status each run, so repeated executions never collide with previously created records.
         ['PersonalDetailsPage', 'editPersonalDetails()'],
         ['PersonalDetailsPage', 'verifySaved()'],
       ];
@@ -89,6 +91,38 @@ function scenarioActions(scenario, isOrangeHrm) {
         ['PIMPage', 'verifyEmployeeCreated()'],
       ];
     }
+    // EDIT EXISTING LEAVE - specific to editing existing leave requests
+    if (/edit.*leave|leave.*edit|modify.*leave|leave.*modify|update.*leave|leave.*update|save.*updated/i.test(s)) {
+      return [
+        ['LoginPage', 'login()'],
+        // editExistingLeave navigates to Leave → My Leave → finds existing leave → edits → saves
+        ['LeavePage', 'editExistingLeave()'],
+        ['LeavePage', 'verifyLeaveEdited()'],
+      ];
+    }
+    // NAVIGATE TO LEAVE MODULE - just verify navigation, no apply
+    if (/navigate.*leave|leave.*navigate|my leave\b/i.test(s)) {
+      return [
+        ['LoginPage', 'login()'],
+        ['LeavePage', 'navigateToLeaveModule()'],
+      ];
+    }
+    // APPLY NEW LEAVE - only when explicitly about applying for leave
+    if (/apply.*leave|leave.*apply|submit.*leave|leave.*submit/i.test(s)) {
+      return [
+        ['LoginPage', 'login()'],
+        ['LeavePage', "applyLeave('CAN - Personal', 'Automated leave request')"],
+        ['LeavePage', 'verifyLeaveSubmitted()'],
+      ];
+    }
+    // LOCATE EXISTING LEAVE - find and select an existing leave request
+    if (/locate.*existing|existing.*leave|find.*leave|leave.*find|eligible.*modification|list.*history/i.test(s)) {
+      return [
+        ['LoginPage', 'login()'],
+        ['LeavePage', 'editExistingLeave()'],
+      ];
+    }
+    // Generic leave - apply new leave as fallback
     if (/\bleave\b/.test(s)) {
       return [
         ['LoginPage', 'login()'],

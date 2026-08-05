@@ -8,7 +8,7 @@
     "site": "OrangeHRM",
     "isOrangeHrm": true
   },
-  "generatedAt": "2026-08-04T10:56:08.631Z",
+  "generatedAt": "2026-08-05T14:56:30.182Z",
   "source": "JIRA",
   "ui": [
     {
@@ -22,7 +22,7 @@
     {
       "tcid": "TC_UI_02",
       "scenario": "Verify: User can navigate to the *Leave* module.",
-      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"Apply\" and select the Leave Type, From Date, and To Date.\n6. Add any comments and click \"Apply\".\n7. Verify the leave request is submitted successfully.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Verify the Leave module loads and displays the Leave List or My Leave view.\n6. Verify the page shows leave options like \"Apply\", \"My Leave\", or \"Entitlements\".",
       "expected": "The leave request is submitted successfully.",
       "priority": "Medium",
       "severity": "Major"
@@ -38,15 +38,15 @@
     {
       "tcid": "TC_UI_04",
       "scenario": "Verify: User can edit the leave request details (e.g., leave dates or leave type).",
-      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"Apply\" and select the Leave Type, From Date, and To Date.\n6. Add any comments and click \"Apply\".\n7. Verify the leave request is submitted successfully.",
-      "expected": "The leave request is submitted successfully.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"My Leave\" to view the leave list/calendar.\n6. Locate an existing leave request from the list that is eligible for modification (Pending or Cancelled status).\n7. Click the \"Edit\" icon or action for the existing leave request.\n8. Modify the leave details (e.g., change dates, leave type, or add comments).\n9. Click \"Save\" or \"Update\" to apply the changes.\n10. Verify the updated leave details are reflected in the leave list.",
+      "expected": "The existing leave request is updated successfully.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_05",
       "scenario": "Verify: User can save the updated leave request successfully.",
-      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"Apply\" and select the Leave Type, From Date, and To Date.\n6. Add any comments and click \"Apply\".\n7. Verify the leave request is submitted successfully.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"My Leave\" to view the leave list/calendar.\n6. Locate an existing leave request from the list that is eligible for modification (Pending or Cancelled status).\n7. Click the \"Edit\" icon or action for the existing leave request.\n8. Modify the leave details (e.g., change dates, leave type, or add comments).\n9. Click \"Save\" or \"Update\" to apply the changes.\n10. Verify the updated leave details are reflected in the leave list.",
       "expected": "The leave request is submitted successfully.",
       "priority": "Medium",
       "severity": "Major"
@@ -55,14 +55,14 @@
       "tcid": "TC_UI_06",
       "scenario": "Verify: A success confirmation message is displayed.",
       "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. Navigate to the relevant section of the application.\n5. Perform the action required by: \"A success confirmation message is displayed.\".\n6. Verify the expected result is displayed.",
-      "expected": "The action for \"A success confirmation message is displayed.\" completes successfully with the expected result displayed.",
+      "expected": "A success confirmation message is displayed.",
       "priority": "Medium",
       "severity": "Major"
     },
     {
       "tcid": "TC_UI_07",
       "scenario": "Verify: Updated leave details are reflected in the Leave List/History.",
-      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"Apply\" and select the Leave Type, From Date, and To Date.\n6. Add any comments and click \"Apply\".\n7. Verify the leave request is submitted successfully.",
+      "steps": "1. Launch the OrangeHRM application and log in as Admin.\n2. Navigate to My Info.\n3. Verify the page loads without errors.\n4. From the top menu bar, click \"Leave\".\n5. Click \"My Leave\" to view the leave list/calendar.\n6. Locate an existing leave request from the list that is eligible for modification (Pending or Cancelled status).\n7. Click the \"Edit\" icon or action for the existing leave request.\n8. Modify the leave details (e.g., change dates, leave type, or add comments).\n9. Click \"Save\" or \"Update\" to apply the changes.\n10. Verify the updated leave details are reflected in the leave list.",
       "expected": "The leave request is submitted successfully.",
       "priority": "Medium",
       "severity": "Major"

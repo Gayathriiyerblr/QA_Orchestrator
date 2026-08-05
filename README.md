@@ -211,7 +211,15 @@ To get started with running the orchestration workflow, please refer to the comp
 
 ### Running the Orchestrated Workflow
 
-The system is fully automated: JIRA ticket → requirement analysis → AI test generation → POM Playwright scripts → execution → reporting. To run the dashboard and orchestrated workflow, please refer to the [UserGuide.md](./UserGuide.md).
+The system is fully automated: JIRA ticket → requirement analysis → AI test generation → POM Playwright scripts → execution → reporting.
+
+**One-command launcher** (recommended):
+```bash
+npm run dev                  # Starts both backend (5000) + frontend (5173) together
+npm run dev -- SCRUM-45      # Same but opens dashboard pre-focused on SCRUM-45
+```
+
+Or run components separately (see [UserGuide.md](./UserGuide.md)):
 
 ## 🛠 Technology Stack
 

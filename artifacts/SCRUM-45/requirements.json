@@ -25,6 +25,17 @@
     "complexity": "Medium",
     "dependencies": []
   },
-  "bugs": [],
-  "generatedAt": "2026-08-04T10:56:08.621Z"
+  "bugs": [
+    {
+      "bugId": "SCRUM-51",
+      "tcid": "TC_API_BUG: PUT /api/personal-details",
+      "title": "[BUG] Test Case TC_API_BUG failed",
+      "description": "Test case TC_API_BUG: PUT /api/personal-details failed during automated execution.\nError: Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 200",
+      "severity": "High",
+      "status": "Open",
+      "jiraUrl": "https://gayathriiyerbloreiihr.atlassian.net/browse/SCRUM-51",
+      "loggedToJira": true
+    }
+  ],
+  "generatedAt": "2026-08-05T14:56:30.168Z"
 }
